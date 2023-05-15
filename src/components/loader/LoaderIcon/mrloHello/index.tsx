@@ -8,7 +8,6 @@ import {
 } from "@builder.io/qwik";
 import { useLocation } from "@builder.io/qwik-city";
 import gsap from "gsap";
-import { transformToMrlo } from "~/utils/github";
 // import GSDevTools from "~/hooks/useGSDevTools";
 
 interface Props {
@@ -71,12 +70,7 @@ export default component$<Props>((props) => {
 
   return (
     <div class="flex">
-      <img
-        id="loaderMrlo"
-        src={transformToMrlo(location.url.origin, "/images/loader/hello.png")}
-        alt="MrLo"
-        class=""
-      />
+      <img id="loaderMrlo" src="/images/loader/hello.png" alt="MrLo" class="" />
     </div>
   );
 });
