@@ -1,12 +1,12 @@
-import { component$, Slot, useStyles$ } from "@builder.io/qwik";
+import { component$, Slot, useStyles$, useVisibleTask$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
-
-import Header from "~/components/starter/header/header";
-import Footer from "~/components/starter/footer/footer";
 
 import styles from "./styles.css?inline";
 import PlainBackground from "~/components/loader/background/plainBackground";
 import Blackhole from "~/components/loader/LoaderIcon/blackhole";
+
+import { gsap } from "gsap";
+import GSDevTools from "~/hooks/useGSDevTools";
 
 export const useServerTimeLoader = routeLoader$(() => {
   return {
@@ -16,6 +16,14 @@ export const useServerTimeLoader = routeLoader$(() => {
 
 export default component$(() => {
   useStyles$(styles);
+
+  useVisibleTask$(async()=> {
+    await GSDevTools();
+
+    const devtools = (globalThis as any).GSDevTools as any;
+
+    gsap.registerPlugin(devtools);
+  })
   return (
     <>
       <main class="flex flex-col h-full min-h-screen">
