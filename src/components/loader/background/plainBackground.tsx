@@ -327,11 +327,11 @@ export default component$(() => {
         .to(
           ".iconElement",
           {
-            duration: 0.5,
+            duration: 0.3,
             scaleY: 0.0,
             ease: "ease.inOut",
           },
-          "<+0.1"
+          "<+0.15"
         )
         .to(
           ".iconElement",
