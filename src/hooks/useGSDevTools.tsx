@@ -1,5 +1,7 @@
 import { $ } from "@builder.io/qwik";
 
+// const url =
+//   "https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/GSDevTools3.min.js";
 const GSDevTools = $(async () => {
   function loadScript() {
     return new Promise<(opts: any) => void>((resolve, reject) => {
@@ -7,8 +9,8 @@ const GSDevTools = $(async () => {
         return resolve((globalThis as any).confetti as any);
       }
       const script = document.createElement("script");
-      script.src =
-        "https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/GSDevTools3.min.js";
+      script.src = "";
+
       script.onload = () => resolve((globalThis as any).confetti as any);
       script.onerror = reject;
       document.head.appendChild(script);

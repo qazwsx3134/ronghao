@@ -6,7 +6,7 @@ import {
   useVisibleTask$,
   type Signal,
 } from "@builder.io/qwik";
-import { useLocation } from "@builder.io/qwik-city";
+// import { useLocation } from "@builder.io/qwik-city";
 import gsap from "gsap";
 // import GSDevTools from "~/hooks/useGSDevTools";
 
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export default component$<Props>((props) => {
-  const location = useLocation();
+  // const location = useLocation();
   const timeLineStore = useStore<{ timeLine: NoSerialize<gsap.core.Timeline> }>(
     {
       timeLine: undefined,

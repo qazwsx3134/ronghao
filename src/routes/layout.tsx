@@ -3,10 +3,10 @@ import { routeLoader$ } from "@builder.io/qwik-city";
 
 import styles from "./styles.css?inline";
 import PlainBackground from "~/components/loader/background/plainBackground";
-import Blackhole from "~/components/loader/LoaderIcon/blackhole";
+import Blackhole from "~/components/loader/LoaderIcon/blackhole/blackholeOriginal";
 
-import { gsap } from "gsap";
-import GSDevTools from "~/hooks/useGSDevTools";
+// import { gsap } from "gsap";
+// import GSDevTools from "~/hooks/useGSDevTools";
 
 export const useServerTimeLoader = routeLoader$(() => {
   return {
@@ -18,17 +18,17 @@ export default component$(() => {
   useStyles$(styles);
 
   useVisibleTask$(async()=> {
-    await GSDevTools();
+    // await GSDevTools();
 
-    const devtools = (globalThis as any).GSDevTools as any;
+    // const devtools = (globalThis as any).GSDevTools as any;
 
-    gsap.registerPlugin(devtools);
+    // gsap.registerPlugin(devtools);
   })
   return (
     <>
       <main class="flex flex-col h-full min-h-screen">
         <PlainBackground>
-          <Blackhole q:slot="icon" />
+          <Blackhole q:slot="icon" class="aspect-square rotate-[20deg] iconElement"/>
         </PlainBackground>
         <Slot />
       </main>

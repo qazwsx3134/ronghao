@@ -1,4 +1,6 @@
 import { component$, QwikIntrinsicElements } from "@builder.io/qwik";
+import { useLocation } from "@builder.io/qwik-city";
+import { transformToRonghao } from "~/utils/github";
 
 export default component$(
   (
@@ -6,6 +8,8 @@ export default component$(
       key?: string;
     }
   ) => {
-    return <img {...props} src="/images/loader/blackhole-yellow.webp" alt="" />;
+    const location = useLocation();
+
+    return <img {...props} src={transformToRonghao(location.url.origin,"/images/loader/blackhole-yellow.webp")} alt="" />;
   }
 );

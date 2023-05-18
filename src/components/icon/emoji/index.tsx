@@ -1,6 +1,6 @@
 import { component$, type QwikIntrinsicElements } from "@builder.io/qwik";
 import { useLocation } from "@builder.io/qwik-city";
-import { transformToMrlo } from "~/utils/github";
+import { transformToRonghao } from "~/utils/github";
 
 const emojiPath = "/images/emojis";
 const emojiMap = {
@@ -24,7 +24,10 @@ export default component$(
     // Check if emoji is a start with /mrlo
 
     const src = emojiMap[emoji].startsWith("/mrlo")
-      ? transformToMrlo(location.url.origin, `${emojiPath}${emojiMap[emoji]}`)
+      ? transformToRonghao(
+          location.url.origin,
+          `${emojiPath}${emojiMap[emoji]}`
+        )
       : emojiMap[emoji];
     return <img {...rest} key={props?.key} src={src} />;
   }
