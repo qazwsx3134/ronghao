@@ -202,6 +202,11 @@ export default component$(() => {
       starList.forEach((starAry, starIndex) => {
         starAry.forEach((star, index) => {
           gsap.to(`.star${starIndex + 1}-${index + 1}`, {
+            duration: 1,
+            opacity: 1,
+            ease: "ease.inOut",
+          });
+          gsap.to(`.star${starIndex + 1}-${index + 1}`, {
             duration: random(48, 72),
             ease: "none",
             motionPath: {
@@ -313,24 +318,34 @@ export default component$(() => {
     };
     setTimeout(() => {
       const timeline = gsap.timeline();
-      timeline.to(".shrinkElement", {
-        duration: 0.5,
-        scale: 0.0,
-        ease: "ease.inOut",
-      }).to(".iconElement", {
-        duration: 0.5,
-        scaleY: 0.0,
-        ease: "ease.inOut",
-      },'<+0.1').to(".iconElement", {
-        duration: 0.4,
-        scaleX: 0.0,
-        ease: "ease.inOut",
-        onComplete: () => {
-          transitionOfGrid();
-        },
-      },'<')
-
-    }, 500);
+      timeline
+        .to(".shrinkElement", {
+          duration: 0.5,
+          scale: 0.0,
+          ease: "ease.inOut",
+        })
+        .to(
+          ".iconElement",
+          {
+            duration: 0.5,
+            scaleY: 0.0,
+            ease: "ease.inOut",
+          },
+          "<+0.1"
+        )
+        .to(
+          ".iconElement",
+          {
+            duration: 0.4,
+            scaleX: 0.0,
+            ease: "ease.inOut",
+            onComplete: () => {
+              transitionOfGrid();
+            },
+          },
+          "<"
+        );
+    }, 1500);
     cleanup(() => {
       gsapCtx.kill();
     });
@@ -367,7 +382,7 @@ export default component$(() => {
                       ]}
                       style={{
                         transform: `scale(${random(0.5, 1.3)})`,
-                        opacity: random(0.4, 1),
+                        opacity: 0,
                       }}
                     />
                   ))}
@@ -397,7 +412,7 @@ export default component$(() => {
                       ]}
                       style={{
                         transform: `scale(${random(0.5, 1.3)})`,
-                        opacity: random(0.4, 1),
+                        opacity: 0,
                       }}
                     />
                   ))}
