@@ -1,0 +1,1 @@
+import{H as t}from"./q-3e17a5c2.js";import{t as a}from"./q-2ce66766.js";import{a as e}from"./q-9bb91f8f.js";const n=o=>{const r=e();return t("img",{...o,src:a(r.url.origin,"/images/loader/blackhole-yellow.webp")},{alt:""},0,"E8_0")};export{n as s_AxynQeeYtSI};
