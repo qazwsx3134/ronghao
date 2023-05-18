@@ -1,0 +1,1 @@
+import{H as t}from"./q-3e17a5c2.js";import{t as s}from"./q-2ce66766.js";import{a}from"./q-e8e00ba4.js";const e=o=>{const r=a();return t("img",{...o,src:s(r.url.origin,"/images/loader/starUpset.webp")},{alt:""},0,"Py_0")};export{e as s_9ZxjQsS5R5U};
