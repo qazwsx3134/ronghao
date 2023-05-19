@@ -5,6 +5,7 @@ export default component$(() => {
   return (
     <>
       <div>Hello</div>
+      <button class="btn">Button</button>
     </>
   );
 });

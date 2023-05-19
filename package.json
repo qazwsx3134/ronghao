@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "cross-env": "^7.0.3",
+    "daisyui": "^2.51.6",
     "dayjs": "^1.11.7",
     "gh-pages": "^5.0.0",
     "gsap": "^3.11.5",

@@ -306,7 +306,7 @@ export default component$(() => {
           from: "center",
         },
         fade: true,
-        spin: 0.2,
+        spin: 0.1,
         absolute: true,
         onComplete: () => {
           // Remove the grid
