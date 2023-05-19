@@ -1,4 +1,4 @@
-import { component$, Slot, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, Slot, useStylesScoped$, useVisibleTask$ } from "@builder.io/qwik";
 import gsap from "gsap";
 import { v4 as uuidv4 } from "uuid";
 import Flip from "gsap/Flip";
@@ -19,7 +19,10 @@ import { StarTrack6 } from "../LoaderIcon/star/startTrack6";
 
 import StarUpset from "../LoaderIcon/star/starUpset";
 
+import oldTVstyles from "./oldTV.css?inline";
+
 const starList = [
+  // 1
   [
     {
       start: 0.0,
@@ -29,24 +32,25 @@ const starList = [
     {
       start: 0.47,
       end: -0.7,
-      offsetY: -10,
+      offsetY: 0,
     },
     {
       start: 0.33,
       end: -0.9,
-      offsetY: -15,
+      offsetY: 0,
     },
     {
       start: 0.59,
       end: -0.41,
-      offsetY: -30,
+      offsetY: 0,
     },
     {
       start: 0.17,
       end: -0.8,
-      offsetY: -25,
+      offsetY: 0,
     },
   ],
+  // 2
   [
     {
       start: 0.23,
@@ -56,22 +60,104 @@ const starList = [
     {
       start: 0.12,
       end: -0.88,
-      offsetY: 20,
+      offsetY: 0,
     },
     {
       start: 0.57,
       end: -0.43,
-      offsetY: -10,
+      offsetY: 0,
     },
     {
       start: 0.73,
       end: -0.27,
-      offsetY: -10,
+      offsetY: 0,
     },
     {
       start: 0.65,
       end: -0.35,
-      offsetY: 25,
+      offsetY: 0,
+    },
+  ],
+  // 3
+  [
+    {
+      start: 0.0,
+      end: -1,
+      offsetY: 0,
+    },
+    {
+      start: 0.23,
+      end: -0.77,
+      offsetY: 0,
+    },
+    {
+      start: 0.46,
+      end: -0.54,
+      offsetY: -0,
+    },
+    {
+      start: 0.69,
+      end: -0.31,
+      offsetY: 0,
+    },
+    {
+      start: 0.92,
+      end: -0.08,
+      offsetY: 0,
+    },
+  ],
+  [
+    {
+      start: 0.0,
+      end: -1.0,
+      offsetY: 0,
+    },
+    {
+      start: 0.47,
+      end: -0.7,
+      offsetY: 0,
+    },
+    {
+      start: 0.33,
+      end: -0.9,
+      offsetY: 0,
+    },
+    {
+      start: 0.59,
+      end: -0.41,
+      offsetY: 0,
+    },
+    {
+      start: 0.17,
+      end: -0.8,
+      offsetY: 0,
+    },
+  ],
+  [
+    {
+      start: 0.12,
+      end: -0.88,
+      offsetY: 0,
+    },
+    {
+      start: 0.32,
+      end: -0.68,
+      offsetY: 0,
+    },
+    {
+      start: 0.52,
+      end: -0.47,
+      offsetY: 0,
+    },
+    {
+      start: 0.72,
+      end: -0.28,
+      offsetY: 0,
+    },
+    {
+      start: 0.92,
+      end: -0.08,
+      offsetY: 0,
     },
   ],
   [
@@ -88,103 +174,24 @@ const starList = [
     {
       start: 0.3,
       end: -0.7,
-      offsetY: -11,
+      offsetY: 0,
     },
     {
       start: 0.78,
       end: -0.22,
-      offsetY: 10,
+      offsetY: 0,
     },
     {
       start: 0.15,
       end: -0.85,
-      offsetY: 25,
-    },
-  ],
-  [
-    {
-      start: 0.0,
-      end: -1.0,
       offsetY: 0,
-    },
-    {
-      start: 0.47,
-      end: -0.7,
-      offsetY: -10,
-    },
-    {
-      start: 0.33,
-      end: -0.9,
-      offsetY: -15,
-    },
-    {
-      start: 0.59,
-      end: -0.41,
-      offsetY: -30,
-    },
-    {
-      start: 0.17,
-      end: -0.8,
-      offsetY: -25,
-    },
-  ],
-  [
-    {
-      start: 0.23,
-      end: -0.77,
-      offsetY: 0,
-    },
-    {
-      start: 0.12,
-      end: -0.88,
-      offsetY: 20,
-    },
-    {
-      start: 0.57,
-      end: -0.43,
-      offsetY: -10,
-    },
-    {
-      start: 0.73,
-      end: -0.27,
-      offsetY: -10,
-    },
-    {
-      start: 0.65,
-      end: -0.35,
-      offsetY: 25,
-    },
-  ],
-  [
-    {
-      start: 0.82,
-      end: -0.18,
-      offsetY: 0,
-    },
-    {
-      start: 0.93,
-      end: -0.17,
-      offsetY: 0,
-    },
-    {
-      start: 0.3,
-      end: -0.7,
-      offsetY: -11,
-    },
-    {
-      start: 0.78,
-      end: -0.22,
-      offsetY: 10,
-    },
-    {
-      start: 0.15,
-      end: -0.85,
-      offsetY: 25,
     },
   ],
 ];
 
 export default component$(() => {
+
+  useStylesScoped$(oldTVstyles)
   useVisibleTask$(async ({ cleanup }) => {
     // await GSDevTools();
 
@@ -209,6 +216,7 @@ export default component$(() => {
           gsap.to(`.star${starIndex + 1}-${index + 1}`, {
             duration: random(48, 72),
             ease: "none",
+            transformOrigin: "50% 50%",
             motionPath: {
               path: `#starTrack${starIndex + 1}`,
               align: `#starTrack${starIndex + 1}`,
@@ -231,11 +239,11 @@ export default component$(() => {
         duration: 48,
         ease: "none",
         motionPath: {
-          path: "#starTrack4",
-          align: "#starTrack4",
+          path: "#starTrack5",
+          align: "#starTrack5",
           alignOrigin: [0.5, 0.5],
           offsetX: 0,
-          offsetY: 0,
+          offsetY: -50,
           start: 0.3,
           end: -0.7,
         },
@@ -316,36 +324,36 @@ export default component$(() => {
         },
       });
     };
-    setTimeout(() => {
-      const timeline = gsap.timeline();
-      timeline
-        .to(".shrinkElement", {
-          duration: 0.5,
-          scale: 0.0,
-          ease: "ease.inOut",
-        })
-        .to(
-          ".iconElement",
-          {
-            duration: 0.3,
-            scaleY: 0.0,
-            ease: "ease.inOut",
-          },
-          "<+0.15"
-        )
-        .to(
-          ".iconElement",
-          {
-            duration: 0.4,
-            scaleX: 0.0,
-            ease: "ease.inOut",
-            onComplete: () => {
-              transitionOfGrid();
-            },
-          },
-          "<"
-        );
-    }, 1500);
+    // setTimeout(() => {
+    //   const timeline = gsap.timeline();
+    //   timeline
+    //     .to(".shrinkElement", {
+    //       duration: 0.5,
+    //       scale: 0.0,
+    //       ease: "ease.inOut",
+    //     })
+    //     .to(
+    //       ".iconElement",
+    //       {
+    //         duration: 0.3,
+    //         scaleY: 0.0,
+    //         ease: "ease.inOut",
+    //       },
+    //       "<+0.15"
+    //     )
+    //     .to(
+    //       ".iconElement",
+    //       {
+    //         duration: 0.4,
+    //         scaleX: 0.0,
+    //         ease: "ease.inOut",
+    //         onComplete: () => {
+    //           transitionOfGrid();
+    //         },
+    //       },
+    //       "<"
+    //     );
+    // }, 1500);
     cleanup(() => {
       gsapCtx.kill();
     });
@@ -354,9 +362,9 @@ export default component$(() => {
   return (
     <div
       id="loaderLayer"
-      class="loader h-screen w-full absolute z-50 bg-slate-900"
+      class="loader h-screen w-full absolute z-50 bg-slate-900 tvOverlay"
     >
-      <div class="absolute gridContainer w-full h-full grid lg:grid-cols-[repeat(16,_minmax(0,_1fr))] grid-cols-6 z-10">
+      <div class="absolute gridContainer w-full h-full grid lg:grid-cols-[repeat(16,_minmax(0,_1fr))] grid-cols-6 z-10 ">
         {Array(16 * 9)
           .fill(0)
           .map(() => (
@@ -389,9 +397,9 @@ export default component$(() => {
               </>
             );
           })}
-        <StarTrack1 class="w-full absolute lg:top-[20%] top-[10%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 " />
+        <StarTrack1 class="w-full absolute lg:top-[20%] top-[8%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 " />
         <StarTrack2 class="lg:w-full w-2/3 absolute lg:top-[27%] top-[20%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 " />
-        <StarTrack3 class="lg:w-full w-1/4 absolute lg:top-[34%] top-[30%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 " />
+        <StarTrack3 class="lg:w-full w-1/4 absolute lg:top-[34%] top-[32%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 " />
       </div>
       <div class="z-10 absolute w-full h-full shrinkElement">
         {Array(3)
@@ -421,9 +429,9 @@ export default component$(() => {
           })}
         <StarSmile class="aspect-square w-12 absolute top-1/4 left-2/3 transform -translate-x-1/2 -translate-y-1/2 starSmile" />
         <StarUpset class="aspect-square w-12 absolute top-3/4 left-1/3 transform -translate-x-1/2 -translate-y-1/2 starUpset" />
-        <StarTrack4 class="lg:w-full w-1/4 absolute top-[67%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 " />
-        <StarTrack5 class="lg:w-full w-2/3 absolute top-[74%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 " />
-        <StarTrack6 class="lg:w-full w-full absolute top-[81%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 " />
+        <StarTrack4 class="lg:w-full w-1/4 absolute lg:top-[67%] top-[62%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 " />
+        <StarTrack5 class="lg:w-full w-2/3 absolute lg:top-[74%] top-[73%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 " />
+        <StarTrack6 class="lg:w-full w-full absolute lg:top-[81%] top-[84%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 " />
       </div>
       <div
         id="icon"

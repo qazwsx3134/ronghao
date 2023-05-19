@@ -14,7 +14,7 @@ export default component$(
         {...props}
         src={transformToRonghao(
           location.url.origin,
-          "/images/loader/blackhole.webp"
+          "/images/loader/gargantuaBlackHole.webp"
         )}
         alt=""
       />
