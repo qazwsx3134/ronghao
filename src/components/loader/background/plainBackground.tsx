@@ -1,4 +1,9 @@
-import { component$, Slot, useStylesScoped$, useVisibleTask$ } from "@builder.io/qwik";
+import {
+  component$,
+  Slot,
+  useStylesScoped$,
+  useVisibleTask$,
+} from "@builder.io/qwik";
 import gsap from "gsap";
 import { v4 as uuidv4 } from "uuid";
 import Flip from "gsap/Flip";
@@ -19,179 +24,178 @@ import { StarTrack6 } from "../LoaderIcon/star/startTrack6";
 
 import StarUpset from "../LoaderIcon/star/starUpset";
 
-import oldTVstyles from "./oldTV.css?inline";
+import oldTVstyles from "~/components/overlay/oldTV/oldTV.css?inline";
 
 const starList = [
   // 1
   [
     {
+      start: 0.22,
+      end: -0.25,
+      offsetY: -30,
+    },
+    {
+      start: 0.13,
+      end: -0.25,
+      offsetY: 10,
+    },
+    {
       start: 0.0,
-      end: -1.0,
-      offsetY: 0,
+      end: -0.25,
+      offsetY: -15,
     },
     {
-      start: 0.47,
-      end: -0.7,
-      offsetY: 0,
+      start: 0.9,
+      end: -0.25,
+      offsetY: -30,
     },
     {
-      start: 0.33,
-      end: -0.9,
-      offsetY: 0,
-    },
-    {
-      start: 0.59,
-      end: -0.41,
-      offsetY: 0,
-    },
-    {
-      start: 0.17,
-      end: -0.8,
-      offsetY: 0,
+      start: 0.37,
+      end: -0.25,
+      offsetY: -30,
     },
   ],
   // 2
   [
     {
-      start: 0.23,
-      end: -0.77,
+      start: 0.2,
+      end: -0.25,
       offsetY: 0,
     },
     {
-      start: 0.12,
-      end: -0.88,
-      offsetY: 0,
+      start: 0.08,
+      end: -0.25,
+      offsetY: 10,
     },
     {
-      start: 0.57,
-      end: -0.43,
-      offsetY: 0,
+      start: 0.0,
+      end: -0.25,
+      offsetY: -15,
     },
     {
-      start: 0.73,
-      end: -0.27,
-      offsetY: 0,
+      start: 0.7,
+      end: -0.25,
+      offsetY: -5,
     },
     {
-      start: 0.65,
-      end: -0.35,
-      offsetY: 0,
+      start: 0.37,
+      end: -0.25,
+      offsetY: -30,
     },
   ],
   // 3
   [
     {
-      start: 0.0,
-      end: -1,
-      offsetY: 0,
+      start: 0.2,
+      end: -0.25,
+      offsetY: -30,
     },
     {
-      start: 0.23,
-      end: -0.77,
-      offsetY: 0,
+      start: 0.08,
+      end: -0.25,
+      offsetY: -30,
     },
-    {
-      start: 0.46,
-      end: -0.54,
-      offsetY: -0,
-    },
-    {
-      start: 0.69,
-      end: -0.31,
-      offsetY: 0,
-    },
-    {
-      start: 0.92,
-      end: -0.08,
-      offsetY: 0,
-    },
-  ],
-  [
     {
       start: 0.0,
-      end: -1.0,
-      offsetY: 0,
+      end: -0.25,
+      offsetY: -30,
     },
     {
-      start: 0.47,
-      end: -0.7,
-      offsetY: 0,
+      start: 0.7,
+      end: -0.25,
+      offsetY: -30,
     },
     {
-      start: 0.33,
-      end: -0.9,
-      offsetY: 0,
-    },
-    {
-      start: 0.59,
-      end: -0.41,
-      offsetY: 0,
-    },
-    {
-      start: 0.17,
-      end: -0.8,
-      offsetY: 0,
+      start: 0.37,
+      end: -0.25,
+      offsetY: -30,
     },
   ],
   [
     {
-      start: 0.12,
-      end: -0.88,
-      offsetY: 0,
+      start: 0.2,
+      end: -0.25,
+      offsetY: -10,
     },
     {
-      start: 0.32,
-      end: -0.68,
-      offsetY: 0,
+      start: 0.08,
+      end: -0.25,
+      offsetY: -10,
     },
     {
-      start: 0.52,
-      end: -0.47,
-      offsetY: 0,
+      start: 0.0,
+      end: -0.25,
+      offsetY: -10,
     },
     {
-      start: 0.72,
-      end: -0.28,
-      offsetY: 0,
+      start: 0.7,
+      end: -0.25,
+      offsetY: -10,
     },
     {
-      start: 0.92,
-      end: -0.08,
-      offsetY: 0,
+      start: 0.37,
+      end: -0.25,
+      offsetY: -10,
     },
   ],
   [
     {
-      start: 0.82,
-      end: -0.18,
+      start: 0.2,
+      end: -0.25,
       offsetY: 0,
     },
     {
-      start: 0.93,
-      end: -0.17,
-      offsetY: 0,
+      start: 0.08,
+      end: -0.25,
+      offsetY: 10,
     },
     {
-      start: 0.3,
-      end: -0.7,
-      offsetY: 0,
+      start: 0.0,
+      end: -0.25,
+      offsetY: -15,
     },
     {
-      start: 0.78,
-      end: -0.22,
-      offsetY: 0,
+      start: 0.7,
+      end: -0.25,
+      offsetY: -5,
     },
     {
-      start: 0.15,
-      end: -0.85,
-      offsetY: 0,
+      start: 0.37,
+      end: -0.25,
+      offsetY: -30,
+    },
+  ],
+  [
+    {
+      start: 0.22,
+      end: -0.25,
+      offsetY: -30,
+    },
+    {
+      start: 0.13,
+      end: -0.25,
+      offsetY: 10,
+    },
+    {
+      start: 0.0,
+      end: -0.25,
+      offsetY: -15,
+    },
+    {
+      start: 0.9,
+      end: -0.25,
+      offsetY: -30,
+    },
+    {
+      start: 0.37,
+      end: -0.25,
+      offsetY: -30,
     },
   ],
 ];
 
 export default component$(() => {
-
-  useStylesScoped$(oldTVstyles)
+  useStylesScoped$(oldTVstyles);
   useVisibleTask$(async ({ cleanup }) => {
     // await GSDevTools();
 
@@ -214,9 +218,9 @@ export default component$(() => {
             ease: "ease.inOut",
           });
           gsap.to(`.star${starIndex + 1}-${index + 1}`, {
-            duration: random(48, 72),
+            duration: 18,
+            yoyo: true,
             ease: "none",
-            transformOrigin: "50% 50%",
             motionPath: {
               path: `#starTrack${starIndex + 1}`,
               align: `#starTrack${starIndex + 1}`,
@@ -324,36 +328,36 @@ export default component$(() => {
         },
       });
     };
-    // setTimeout(() => {
-    //   const timeline = gsap.timeline();
-    //   timeline
-    //     .to(".shrinkElement", {
-    //       duration: 0.5,
-    //       scale: 0.0,
-    //       ease: "ease.inOut",
-    //     })
-    //     .to(
-    //       ".iconElement",
-    //       {
-    //         duration: 0.3,
-    //         scaleY: 0.0,
-    //         ease: "ease.inOut",
-    //       },
-    //       "<+0.15"
-    //     )
-    //     .to(
-    //       ".iconElement",
-    //       {
-    //         duration: 0.4,
-    //         scaleX: 0.0,
-    //         ease: "ease.inOut",
-    //         onComplete: () => {
-    //           transitionOfGrid();
-    //         },
-    //       },
-    //       "<"
-    //     );
-    // }, 1500);
+    setTimeout(() => {
+      const timeline = gsap.timeline();
+      timeline
+        .to(".shrinkElement", {
+          duration: 0.5,
+          scale: 0.0,
+          ease: "ease.inOut",
+        })
+        .to(
+          ".iconElement",
+          {
+            duration: 0.3,
+            scaleY: 0.0,
+            ease: "ease.inOut",
+          },
+          "<+0.15"
+        )
+        .to(
+          ".iconElement",
+          {
+            duration: 0.3,
+            scaleX: 0.0,
+            ease: "none",
+            onComplete: () => {
+              transitionOfGrid();
+            },
+          },
+          "<"
+        );
+    }, 1500);
     cleanup(() => {
       gsapCtx.kill();
     });
