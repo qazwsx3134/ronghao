@@ -232,7 +232,7 @@ export default component$<Props>((props) => {
      */
     const introTimeline = gsap.timeline();
     introTimeline.add("gridSlideIn");
-    introTimeline.from(".gridContainer", {
+    introTimeline.from("#gridContainer", {
       duration: 0.5,
       translateX: "-100%",
       ease: "power2.inOut",
@@ -339,19 +339,17 @@ export default component$<Props>((props) => {
         repeat: -1,
       });
     });
-
     /**
      * Collapse animation
      */
 
     const transitionOfGrid = () => {
-      // Get the state of the grid
       const container = document.querySelector(".gridContainer");
 
       const gridCollector = document.querySelector("#gridCollector");
       const items = document.querySelectorAll(".gridItem");
+      // Get the state of the grid
       const itemsState = Flip.getState(".gridItem");
-
       // Move grid items to their final position
       items.forEach((item) => {
         gridCollector?.appendChild(item);
@@ -359,13 +357,13 @@ export default component$<Props>((props) => {
 
       Flip.from(itemsState, {
         duration: 0.4,
-        ease: "back.in(0.8)",
+        ease: "back.in(0.5)",
+        borderRadius: "50%",
         stagger: {
           each: 0.05,
-          grid: "auto",
-          from: "center",
+          grid: [16, 9],
+          from: "random",
         },
-        spin: 0.1,
         absolute: true,
         onComplete: () => {
           // Remove the grid
@@ -409,12 +407,10 @@ export default component$<Props>((props) => {
           duration: 0.3,
           scaleX: 0.0,
           ease: "none",
-          onComplete: () => {
-            transitionOfGrid();
-          },
         },
         "<"
-      );
+      )
+      .addPause(">", transitionOfGrid);
     outTimeline.pause();
     outTimeLineStore.outTimeLine = noSerialize(outTimeline);
 
@@ -430,7 +426,13 @@ export default component$<Props>((props) => {
       id="loaderLayer"
       class="loader h-screen w-full absolute z-50 bg-slate-900 tvOverlay"
     >
-      <div class="absolute gridContainer w-full h-full grid lg:grid-cols-[repeat(16,_minmax(0,_1fr))] grid-cols-6 z-10 ">
+      <div
+        id="gridContainer"
+        class="absolute w-full h-full grid 
+        lg:grid-cols-[repeat(16,_minmax(0,_1fr))] lg:grid-rows-[repeat(9,_minmax(0,_1fr))] 
+        grid-cols-[repeat(9,_minmax(0,_1fr))] grid-rows-[repeat(16,_minmax(0,_1fr))] 
+        z-10"
+      >
         {Array(16 * 9)
           .fill(0)
           .map(() => (
