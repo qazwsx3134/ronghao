@@ -25,9 +25,9 @@ import {
   Points,
   Clock,
 } from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
-// @ts-ignore
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 export default component$(() => {
   const sceneStore = useStore<{ instance: NoSerialize<Scene> }>({
@@ -105,6 +105,18 @@ export default component$(() => {
     const torus = new Points(geoTorus, matTorus);
     meshStore.torus = noSerialize(torus);
 
+    // gltf
+    const loader = new GLTFLoader();
+    loader.load(
+      "/three/scene.gltf",
+      (gltf) => {
+        console.log("gltf", gltf);
+        scene.add(gltf.scene);
+        scene.add(gltf.layers);
+      },
+      (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
+      (error) => console.log("An error happened", error)
+    );
     /**
      * Renderer
      */
@@ -142,12 +154,13 @@ export default component$(() => {
      */
 
     // Point Light 點光源
-    const pointLight = new PointLight(0xffffff);
-    pointLight.position.set(5, 5, 5);
+    const pointLight = new PointLight(0xccc6aa);
+    pointLight.position.set(5, 5, 30);
     scene.add(pointLight);
 
     // Ambient Light 環境光
-    const ambientLight = new AmbientLight(0xffffff);
+    const ambientLight = new AmbientLight(0xccc6aa);
+    ambientLight.intensity = 10;
     scene.add(ambientLight);
 
     // Directional Light 方向光 (太陽光)
