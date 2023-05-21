@@ -360,7 +360,7 @@ export default component$<Props>((props) => {
         ease: "back.in(0.5)",
         borderRadius: "50%",
         stagger: {
-          each: 0.05,
+          each: 0.04,
           grid: [16, 9],
           from: "random",
         },
@@ -376,7 +376,7 @@ export default component$<Props>((props) => {
             {
               background: "transparent",
               ease: "power.out",
-              duration: 0.5,
+              duration: 0.1,
               onComplete: () => {
                 gsap.set("#loaderLayer", { display: "none" });
               },

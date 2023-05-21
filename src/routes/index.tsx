@@ -1,7 +1,7 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import PlainBackground from "~/components/loader/background/plainBackground";
-import Blackhole from "~/components/loader/LoaderIcon/blackhole/blackholeOriginal";
+import BlackHoleCanvas from "~/components/three/blackHoleCanvas";
 
 export default component$(() => {
   const onDone = useSignal(false);
@@ -12,13 +12,14 @@ export default component$(() => {
   });
   return (
     <>
-      <PlainBackground onDone={onDone}>
+      {/* <PlainBackground onDone={onDone}>
         <Blackhole
           q:slot="icon"
           class="aspect-square rotate-[20deg] iconElement"
         />
-      </PlainBackground>
+      </PlainBackground> */}
       <div>Hello</div>
+      <BlackHoleCanvas />
       <button class="btn">Button</button>
     </>
   );
