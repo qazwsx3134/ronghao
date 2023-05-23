@@ -1,7 +1,7 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import PlainBackground from "~/components/loader/background/plainBackground";
-import BlackHoleCanvas from "~/components/three/blackHoleCanvas";
+
 
 export default component$(() => {
   const onDone = useSignal(false);
@@ -19,7 +19,7 @@ export default component$(() => {
         />
       </PlainBackground> */}
       <div>Hello</div>
-      <BlackHoleCanvas />
+
       <button class="btn">Button</button>
     </>
   );
