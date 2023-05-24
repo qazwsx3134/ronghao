@@ -19,8 +19,6 @@ export default component$(() => {
         />
       </PlainBackground> */}
       <div>Hello</div>
-
-      <button class="btn">Button</button>
     </>
   );
 });

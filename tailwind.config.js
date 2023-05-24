@@ -15,6 +15,9 @@ module.exports = {
           800: "#666355",
           900: "#33312a"
         },
+      },
+      fontFamily: {
+        digi: ["Orbitron", "sans-serif"],
       }
     },
   },
