@@ -30,7 +30,7 @@ export default component$(() => {
   return (
     <>
       <PcHud />
-      <main class="flex flex-col h-full min-h-screen bg-black">
+      <main class="flex flex-col h-full min-h-screen bg-white">
         <div class="fixed h-28 w-full flex px-12 pt-6 items-center ">
           {/* Logo */}
           <button class="btn btn-ghost">
