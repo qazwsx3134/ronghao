@@ -376,7 +376,7 @@ export default component$<Props>((props) => {
             {
               background: "transparent",
               ease: "power.out",
-              duration: 0.1,
+              duration: 0.2,
               onComplete: () => {
                 gsap.set("#loaderLayer", { display: "none" });
               },

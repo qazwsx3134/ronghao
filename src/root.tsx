@@ -21,6 +21,10 @@ export default component$(() => {
       <head>
         <meta charSet="utf-8" />
         <link rel="manifest" href="/manifest.json" />
+        <link
+          href="https://unpkg.com/video.js@7/dist/video-js.min.css"
+          rel="stylesheet"
+        />
         <RouterHead />
       </head>
       <body lang="en" data-theme="dracula">

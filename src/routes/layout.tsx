@@ -30,8 +30,9 @@ export default component$(() => {
   return (
     <>
       <PcHud />
-      <main class="flex flex-col h-full min-h-screen bg-white">
-        <div class="fixed h-28 w-full flex px-12 pt-6 items-center ">
+      <main class="flex flex-col h-full min-h-screen">
+        <div class="pointer-events-none fixed h-full w-full z-[11] bg-black"></div>
+        <div class="fixed h-28 w-full flex px-12 pt-6 items-center z-50">
           {/* Logo */}
           <button class="btn btn-ghost">
             <a href="/" class="font-digi">
@@ -39,7 +40,8 @@ export default component$(() => {
             </a>
           </button>
         </div>
-        <div class="">
+        <div class="fixed bottom-0 h-20 w-full flex px-12 items-center z-40 backdrop-blur-sm"></div>
+        <div class="px-14 py-6 z-20">
           <Slot />
         </div>
       </main>

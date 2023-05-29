@@ -6,7 +6,7 @@ import { HUDRight } from "~/components/hud/pc/right";
 
 export default component$(() => {
   return (
-    <div class="fixed w-full h-full min-h-screen pointer-events-none p-4 z-20 hidden lg:flex opacity-60 ">
+    <div class="fixed w-full h-full min-h-screen pointer-events-none p-4 z-50 hidden lg:flex opacity-60 ">
       <div class="flex-grow-0 shrink-[1]  w-60 h-full">
         <HUDLeft class="h-full w-full" />
       </div>
