@@ -1,0 +1,1 @@
+import{N as n,a as r,n as e,x}from"./q-5b8b86a2.js";const a=s=>{const t=s.size||"lg";return n("div",{class:`${{sm:"w-[28px] h-[28px] text-base",md:"w-[30px] h-[30px] text-lg",lg:"w-[32px] h-[32px] text-xl"}[t]} flex items-center justify-center cursor-pointer hover:bg-buttonHover rounded-md`},null,r(x,{name:"icon",[e]:{name:e}},3,"C4_0"),1,"C4_1")};export{a as s_bKnMFxJ3dpg};
