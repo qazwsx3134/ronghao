@@ -33,7 +33,7 @@ export function HUDRight(props: QwikIntrinsicElements["svg"], key: string) {
           stroke="#73E5FE"
           stroke-width="2"
           stroke-linecap="round"
-          class="svg-elem-1"
+          class="rightHUD"
         ></path>
       </g>
       <defs>

@@ -80,14 +80,14 @@ export function HUDMiddleRight(
         <path
           d="M264.077 15.3165C298.681 15.3165 332.947 23.0939 364.922 38.2069C396.896 53.3201 425.953 75.4739 450.432 103.407C474.911 131.341 494.332 164.506 507.583 201.011C520.834 237.516 527.654 276.643 527.654 316.159C527.654 355.675 520.834 394.802 507.583 431.307C494.332 467.812 474.911 500.977 450.432 528.911C425.953 556.844 396.896 578.998 364.921 594.111C332.947 609.224 298.681 617.001 264.077 617.001"
           stroke="#73E5FE"
-          class="svg-elem-1"
+          class="middleRight1"
         ></path>
       </g>
       <g filter="url(#filter1_d_27_78)">
         <path
           d="M307.572 0.63562C351.067 5.95343 377.716 22.4626 377.716 22.4626C410.791 38.6285 440.844 62.3241 466.161 92.1979C491.477 122.072 505.132 140.633 518.834 179.668L540.582 184.986C571.651 293.256 569.271 352.46 540.582 456.195L514.174 466.83C500.471 505.866 491.477 517.337 466.16 547.21C440.844 577.084 410.79 600.78 377.716 616.946C377.716 616.946 355.728 631.682 307.572 637"
           stroke="#73E5FE"
-          class="svg-elem-2"
+          class="middleRight2"
         ></path>
       </g>
       <g filter="url(#filter2_d_27_78)">
@@ -96,7 +96,7 @@ export function HUDMiddleRight(
           stroke="#73E5FE"
           stroke-width="2.5"
           stroke-linecap="round"
-          class="svg-elem-3"
+          class="middleRight3"
         ></path>
       </g>
       <g filter="url(#filter3_d_27_78)">
@@ -105,7 +105,7 @@ export function HUDMiddleRight(
           stroke="#73E5FE"
           stroke-width="2"
           stroke-linecap="round"
-          class="svg-elem-4"
+          class="middleRight4"
         ></path>
       </g>
       <g filter="url(#filter4_d_27_78)">
@@ -114,7 +114,7 @@ export function HUDMiddleRight(
           stroke="#73E5FE"
           stroke-width="2"
           stroke-linecap="round"
-          class="svg-elem-5"
+          class="middleRight5"
         ></path>
       </g>
       <defs>
