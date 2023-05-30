@@ -8,7 +8,7 @@ import {
   noSerialize,
 } from "@builder.io/qwik";
 
-import * as dat from "dat.gui";
+// import * as dat from "dat.gui";
 
 import {
   Scene,
@@ -66,7 +66,7 @@ export default component$(() => {
     /**
      * Debug
      */
-    const gui = new dat.GUI();
+    // const gui = new dat.GUI();
 
     /**
      * Scene
@@ -110,9 +110,7 @@ export default component$(() => {
     loader.load(
       "/three/scene.gltf",
       (gltf) => {
-        console.log("gltf", gltf);
         scene.add(gltf.scene);
-        scene.add(gltf.layers);
       },
       (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
       (error) => console.log("An error happened", error)

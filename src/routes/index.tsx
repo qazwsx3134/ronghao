@@ -142,7 +142,7 @@ export default component$(() => {
         wordsSet.forEach((word) => {
           masterTimeline.to(".text", {
             duration: 1,
-            ease: "power2.in",
+            ease: "power2.inOut",
             repeat: 1,
             repeatDelay: 1.5,
             yoyo: true,

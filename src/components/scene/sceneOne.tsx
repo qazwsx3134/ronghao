@@ -1,6 +1,4 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
-import PlainBackground from "~/components/loader/background/plainBackground";
 import videojs from "video.js";
 
 export default component$(() => {

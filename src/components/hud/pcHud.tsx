@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default component$<Props>((props) => {
-  useVisibleTask$(async ({ track }) => {
+  useVisibleTask$(async ({ track, cleanup }) => {
     track(() => props.onDone?.value);
 
     /**
@@ -122,6 +122,10 @@ export default component$<Props>((props) => {
       });
 
       return;
+
+      cleanup(() => {
+        gsapCtx.kill();
+      });
     }
   });
 

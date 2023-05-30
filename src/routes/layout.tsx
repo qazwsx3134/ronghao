@@ -6,8 +6,6 @@ import {
 } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 
-import BlackholeOriginal from "~/components/loader/LoaderIcon/blackhole/blackholeOriginal";
-
 import styles from "./styles.css?inline";
 
 // import { gsap } from "gsap";
