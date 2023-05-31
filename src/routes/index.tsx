@@ -18,6 +18,7 @@ import PlainBackground from "~/components/loader/background/plainBackground";
 import BlackholeOriginal from "~/components/loader/LoaderIcon/blackhole/blackholeOriginal";
 import PcHud from "~/components/hud/pcHud";
 import TextPlugin from "gsap/TextPlugin";
+import horizontalLoop from "~/utils/horizontalLoop";
 
 export default component$(() => {
   const onDone = useSignal(false);
@@ -58,6 +59,7 @@ export default component$(() => {
     gsap.set([".HUDTextContainer", ".text", ".hi", ".cursor"], {
       visibility: "hidden",
     });
+
     // Init
     if (onDone.value === false) {
       const player = videojs("my-player", {
@@ -73,6 +75,14 @@ export default component$(() => {
         onDone.value = true;
         player.play();
       }, 2000);
+
+      // const ctx = gsap.context(() => {
+      //   const loop = horizontalLoop(".marqueeText", {
+      //     repeat: -1,
+      //     speed: 1.5,
+      //     reversed: true,
+      //   });
+      // });
     } else {
       gsap.registerPlugin(TextPlugin);
 
@@ -158,22 +168,42 @@ export default component$(() => {
 
   return (
     <>
-      <PlainBackground onDone={onDone}>
+      {/* <PlainBackground onDone={onDone}>
         <BlackholeOriginal
           q:slot="icon"
           class="aspect-square rotate-[20deg] iconElement"
         />
-      </PlainBackground>
+      </PlainBackground> */}
 
       <div class="relative w-full h-full min-h-screen flex">
         <PcHud onDone={onDone} />
         <div class=" w-full h-full z-50 relative flex items-center justify-center grow min-h-screen">
-          <div class="HUDTextContainer flex flex-col justify-around items-center w-[800px] h-[300px] p-4 backdrop-blur-md rounded-md border-white border-[3px] border-opacity-10">
+          <div class="HUDTextContainer flex flex-col justify-around items-center w-[800px] h-[300px] p-4 backdrop-blur-md rounded-md border-white border-[3px] border-opacity-10 invisible">
             <h1 class="text-5xl font-bold relative font-digi text-center w-full leading-normal">
               <div class="hi neonText"></div>
               <span class="text neonText"></span>
               <span class="cursor neonText">_</span>
             </h1>
+          </div>
+        </div>
+        <div class="fixed bottom-14 w-full h-14 z-30 flex items-end">
+          <div class="relative overflow-hidden flex items-end w-full mx-24 border border-white font-digi text-lg tracking-wide">
+            <div class="marqueeText flex-[0_0_33%] py-2 flex">
+              <span class="inline-flex text-gray-500">
+                Specialize in DESIGN
+              </span>
+              &nbsp;
+              <span class="inline-flex">Modern Dynamic Website</span>
+            </div>
+            <div class="marqueeText flex-[0_0_33%] py-2 flex">
+              CREATIVE STUDIO 
+            </div>
+            <div class="marqueeText flex-[0_0_33%] py-2 flex">
+              For your business with taste
+            </div>
+            <div class="marqueeText flex-[0_0_33%] py-2 flex">
+              Fastest framework, Fast development
+            </div>
           </div>
         </div>
         <div class="absolute w-full h-full">
