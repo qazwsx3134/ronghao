@@ -76,13 +76,13 @@ export default component$(() => {
         player.play();
       }, 2000);
 
-      // const ctx = gsap.context(() => {
-      //   const loop = horizontalLoop(".marqueeText", {
-      //     repeat: -1,
-      //     speed: 1.5,
-      //     reversed: true,
-      //   });
-      // });
+      gsap.context(() => {
+        horizontalLoop(".marqueeText", {
+          repeat: -1,
+          speed: 1.5,
+          reversed: true,
+        });
+      });
     } else {
       gsap.registerPlugin(TextPlugin);
 
@@ -168,12 +168,12 @@ export default component$(() => {
 
   return (
     <>
-      {/* <PlainBackground onDone={onDone}>
+      <PlainBackground onDone={onDone}>
         <BlackholeOriginal
           q:slot="icon"
           class="aspect-square rotate-[20deg] iconElement"
         />
-      </PlainBackground> */}
+      </PlainBackground>
 
       <div class="relative w-full h-full min-h-screen flex">
         <PcHud onDone={onDone} />
@@ -196,7 +196,7 @@ export default component$(() => {
               <span class="inline-flex">Modern Dynamic Website</span>
             </div>
             <div class="marqueeText flex-[0_0_33%] py-2 flex">
-              CREATIVE STUDIO 
+              CREATIVE STUDIO
             </div>
             <div class="marqueeText flex-[0_0_33%] py-2 flex">
               For your business with taste
