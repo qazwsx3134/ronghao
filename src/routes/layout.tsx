@@ -29,9 +29,9 @@ export default component$(() => {
     <>
       <main class="flex flex-col h-full min-h-screen">
         <div class="pointer-events-none fixed h-full w-full z-[11] bg-black"></div>
-        <div class="fixed h-28 w-full flex px-12 pt-6 items-center z-50">
+        <div class="fixed h-28 w-full flex px-12 pt-12 items-center z-50">
           {/* Logo */}
-          <button class="btn btn-ghost">
+          <button class="btn btn-ghost logoBtn invisible w-48">
             <a href="/" class="font-digi">
               RONG HAO DESIGN
             </a>
