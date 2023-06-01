@@ -69,8 +69,8 @@ export default component$(() => {
     gsap.registerPlugin(TextPlugin, ScrollTrigger);
     ScrollTrigger.create({
       trigger: "#ScreenOne",
-      start: "25% top",
-      end: "25% top",
+      start: "15% top",
+      end: "15% top",
       onEnter: () => {
         onRevert.value = true;
       },
@@ -272,7 +272,7 @@ export default component$(() => {
       tlStore.mqTl?.timeScale(3).reverse();
     }
     if (!onRevert.value && tlStore.mqTl?.reversed()) {
-      tlStore.mqTl?.timeScale(2).play();
+      tlStore.mqTl?.timeScale(3).play();
     }
   });
 

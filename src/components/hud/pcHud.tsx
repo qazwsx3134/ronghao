@@ -33,7 +33,7 @@ export default component$<Props>((props) => {
      */
     if (props.onDone?.value && !props.onRevert?.value) {
       if (tlStore.timeline) {
-        tlStore.timeline.timeScale(2).play();
+        tlStore.timeline.timeScale(3).play();
         return;
       }
       const originOffset = {
