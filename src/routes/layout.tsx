@@ -33,7 +33,7 @@ export default component$(() => {
           {/* Logo */}
           <button class="btn btn-ghost logoBtn invisible w-48">
             <a href="/" class="font-digi">
-              RONG HAO DESIGN
+              Vida Design
             </a>
           </button>
         </div>

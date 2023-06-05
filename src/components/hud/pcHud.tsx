@@ -11,6 +11,8 @@ import { HUDLeft } from "~/components/hud/pc/left";
 import { HUDMiddleLeft } from "~/components/hud/pc/middleLeft";
 import { HUDMiddleRight } from "~/components/hud/pc/middleRight";
 import { HUDRight } from "~/components/hud/pc/right";
+import { HUDLeftGlow } from "./pc/leftGlow";
+import { HUDRightGlow } from "./pc/rightGlow";
 
 interface Props {
   onDone?: Signal<boolean>;
@@ -20,8 +22,10 @@ interface Props {
 export default component$<Props>((props) => {
   const tlStore = useStore<{
     timeline: NoSerialize<gsap.core.Timeline>;
+    glowTimeline: NoSerialize<gsap.core.Timeline>;
   }>({
     timeline: undefined,
+    glowTimeline: undefined,
   });
   useVisibleTask$(async ({ track, cleanup }) => {
     track(() => props.onDone?.value);
@@ -34,12 +38,22 @@ export default component$<Props>((props) => {
     if (props.onDone?.value && !props.onRevert?.value) {
       if (tlStore.timeline) {
         tlStore.timeline.timeScale(3).play();
+        tlStore.glowTimeline?.play(3);
+
         return;
       }
       const originOffset = {
         strokeDashoffset: 0,
       };
       gsap.context(() => {
+        const HUDGlowTL = gsap.timeline({
+          defaults: {
+            duration: 4,
+            ease: "none",
+            repeat: -1,
+          },
+        });
+
         // LEFT
         const HUDTl = gsap.timeline({
           defaults: {
@@ -47,6 +61,7 @@ export default component$<Props>((props) => {
             ease: "power2.inOut",
           },
         });
+
         HUDTl.fromTo(
           ".leftHUD",
           {
@@ -55,6 +70,23 @@ export default component$<Props>((props) => {
           },
           originOffset,
           "+=2"
+        );
+
+        HUDGlowTL.fromTo(
+          [".leftHUDGlow", ".rightHUDGlow"],
+          {
+            visibility: "hidden",
+            strokeDasharray: 350,
+            strokeDashoffset: 0,
+            opacity: 1,
+          },
+          {
+            visibility: "visible",
+            strokeDashoffset: -700,
+            opacity: 0.7,
+            repeat: -1,
+          },
+          "+=4"
         );
 
         // ML
@@ -149,12 +181,15 @@ export default component$<Props>((props) => {
           originOffset,
           "<"
         );
+
         tlStore.timeline = noSerialize(HUDTl);
+        tlStore.glowTimeline = noSerialize(HUDGlowTL);
       });
     }
 
     if (props.onDone?.value && props.onRevert?.value && tlStore.timeline) {
       tlStore.timeline.timeScale(3).reverse();
+      tlStore.glowTimeline?.pause(0)
     }
 
     cleanup(() => {
@@ -167,16 +202,18 @@ export default component$<Props>((props) => {
   }
 
   return (
-    <div class="fixed w-full h-full min-h-screen pointer-events-none p-4 z-30 lg:flex opacity-80 ">
-      <div class="flex-grow-0 shrink-[1]  w-60 h-full">
-        <HUDLeft class="h-full w-full" />
+    <div class="fixed w-full h-full min-h-screen pointer-events-none p-4 z-30 lg:flex">
+      <div class="flex-grow-0 shrink-[1] w-60 h-full relative">
+        <HUDLeft class="h-full w-full opacity-20" />
+        <HUDLeftGlow class="h-full w-full absolute top-0" />
       </div>
       <div class="grow h-full flex shrink-[2] justify-between">
-        <HUDMiddleLeft class="h-full w-full max-w-[258px] shrink-[2]" />
-        <HUDMiddleRight class="h-full w-full max-w-[565px] shrink" />
+        <HUDMiddleLeft class="h-full w-full max-w-[258px] shrink-[2] opacity-90" />
+        <HUDMiddleRight class="h-full w-full max-w-[565px] shrink opacity-90" />
       </div>
-      <div class="flex-grow-0 shrink-[1] w-60 h-full">
-        <HUDRight class="h-full w-full" />
+      <div class="flex-grow-0 shrink-[1] w-60 h-full relative">
+        <HUDRight class="h-full w-full opacity-20" />
+        <HUDRightGlow class="h-full w-full absolute top-0" />
       </div>
     </div>
   );
