@@ -122,7 +122,7 @@ export default component$(() => {
           scale: 0.2,
           duration: 1,
         },
-        "+=1.5"
+        "+=1.3"
       );
 
       gsap.set([".HUDTextContainer"], {
@@ -248,7 +248,7 @@ export default component$(() => {
             masterTimeline.play();
           },
           text: {
-            value: "We are Vida Design",
+            value: "We are ViDA Design",
           },
         });
 
