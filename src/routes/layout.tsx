@@ -31,9 +31,10 @@ export default component$(() => {
         <div class="pointer-events-none fixed h-full w-full z-[11] bg-black"></div>
         <div class="fixed h-28 w-full flex px-12 pt-12 items-center z-50">
           {/* Logo */}
-          <button class="btn btn-ghost logoBtn invisible w-48">
-            <a href="/" class="font-digi">
-              Vida Design
+          <button class="btn btn-ghost logoBtn invisible w-42 h-20">
+            <a href="/" class="font-digi text-right">
+              <img src="/images/logo.webp" alt="" width={160} height={52} class="w-[100px]"/>
+              Design
             </a>
           </button>
         </div>

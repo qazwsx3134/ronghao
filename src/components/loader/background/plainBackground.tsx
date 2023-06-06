@@ -356,11 +356,11 @@ export default component$<Props>((props) => {
       });
 
       Flip.from(itemsState, {
-        duration: 0.4,
+        duration: 0.3,
         ease: "back.in(0.5)",
         borderRadius: "50%",
         stagger: {
-          each: 0.04,
+          each: 0.03,
           grid: [16, 9],
           from: "random",
         },
@@ -388,14 +388,14 @@ export default component$<Props>((props) => {
     const outTimeline = gsap.timeline();
     outTimeline
       .to(".shrinkElement", {
-        duration: 0.5,
+        duration: 0.3,
         scale: 0.0,
         ease: "ease.inOut",
       })
       .to(
         ".iconElement",
         {
-          duration: 0.3,
+          duration: 0.2,
           scaleY: 0.0,
           ease: "ease.inOut",
         },
@@ -404,7 +404,7 @@ export default component$<Props>((props) => {
       .to(
         ".iconElement",
         {
-          duration: 0.3,
+          duration: 0.2,
           scaleX: 0.0,
           ease: "none",
         },
@@ -428,9 +428,9 @@ export default component$<Props>((props) => {
     >
       <div
         id="gridContainer"
-        class="absolute w-full h-full grid 
-        lg:grid-cols-[repeat(16,_minmax(0,_1fr))] lg:grid-rows-[repeat(9,_minmax(0,_1fr))] 
-        grid-cols-[repeat(9,_minmax(0,_1fr))] grid-rows-[repeat(16,_minmax(0,_1fr))] 
+        class="absolute w-full h-full grid
+        lg:grid-cols-[repeat(16,_minmax(0,_1fr))] lg:grid-rows-[repeat(9,_minmax(0,_1fr))]
+        grid-cols-[repeat(9,_minmax(0,_1fr))] grid-rows-[repeat(16,_minmax(0,_1fr))]
         z-10"
       >
         {Array(16 * 9)

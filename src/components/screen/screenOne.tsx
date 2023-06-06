@@ -20,7 +20,7 @@ import BlackholeOriginal from "~/components/loader/LoaderIcon/blackhole/blackhol
 
 import horizontalLoop from "~/utils/horizontalLoop";
 
-const wordsSet = ["WEB-DEVELOPER", "FRONT-END DEVELOPER", "DESIGNER"];
+const wordsSet = ["Web develop", "Animation design", "Web design"];
 
 export default component$(() => {
   useStylesScoped$(`
@@ -127,12 +127,16 @@ export default component$(() => {
 
       gsap.set([".HUDTextContainer"], {
         visibility: "visible",
+        boxShadow:
+          "rgb(0, 0, 0, 0.8) 0px 0px 0px 2px, rgba(59, 130, 246, 0.5) 0px 0px 0px 5px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
       });
       backGroundTimeline.from(".HUDTextContainer", {
         width: 0,
         padding: 0,
         duration: 1.5,
         border: 0,
+        boxShadow:
+          "rgb(0, 0, 0, 0.8) 0px 0px 0px 0px, rgba(59, 130, 246, 0.5) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
         onComplete: () => {
           gsap.set([".text", ".hi"], {
             visibility: "visible",
@@ -244,7 +248,7 @@ export default component$(() => {
             masterTimeline.play();
           },
           text: {
-            value: "I am Rong Hao",
+            value: "We are Vida Design",
           },
         });
 
@@ -287,7 +291,7 @@ export default component$(() => {
       <section id="ScreenOne" class="w-full h-full flex min-h-screen">
         <PcHud onDone={onDone} onRevert={onRevert} />
         <div class=" w-full h-full z-50 relative flex items-center justify-center grow min-h-screen">
-          <div class="HUDTextContainer flex flex-col justify-around items-center w-[800px] h-[300px] p-4 backdrop-blur-md rounded-md border-white border-[3px] border-opacity-10 invisible">
+          <div class="HUDTextContainer flex flex-col justify-around items-center w-[800px] h-[300px] p-4 backdrop-blur-md rounded-md invisible">
             <h1 class="text-5xl font-bold relative font-digi text-center w-full leading-normal">
               <div class="hi neonText"></div>
               <span class="text neonText"></span>
@@ -326,6 +330,7 @@ export default component$(() => {
             }}
           >
             <source src="/video/galaxy_scene.webm" type="video/webm" />
+            <source src="/video/galaxy_scene.mp4" type="video/mp4" />
           </video>
         </div>
       </section>
