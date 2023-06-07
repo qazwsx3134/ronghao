@@ -15,6 +15,7 @@ module.exports = {
           800: "#666355",
           900: "#33312a"
         },
+        hudGreen: "linear-gradient(270deg, #27612F 35.19%, #3C783D 53.7%)"
       },
       fontFamily: {
         digi: ["Orbitron", "sans-serif"],
