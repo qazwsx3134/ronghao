@@ -4,6 +4,7 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TextPlugin from "gsap/TextPlugin";
+import ThreeDCarousel from "~/components/carousel/threeDCarousel";
 
 import PcTextHud from "~/components/hud/pcTextHud";
 import ScreenOne from "~/components/screen/screenOne";
@@ -126,12 +127,15 @@ export default component$(() => {
       {/* Screen one回來的時候記得把section的hidden加回 */}
       <section class="webBody hidden w-full h-[900vh] min-h-screen relative">
         {/* Left side */}
-        <div class="w-[33vw] h-[100vh] sticky top-0  flex flex-col justify-center items-start z-20">
+        <div class="w-[33vw] h-[100vh] sticky top-0  flex flex-col justify-center items-start z-20 pointer-events-none">
           <PcTextHud />
         </div>
         {/* Right side */}
         <div class="w-full h-full absolute top-0 right-0 flex flex-col">
-          <div class="webSection w-full h-[1200px] flex flex-col"></div>
+          <div class="webSection w-full h-[1200px]">
+            <ThreeDCarousel />
+          </div>
+
           <div class="crawlerSection w-full h-[1200px] flex flex-col bg-slate-900"></div>
         </div>
       </section>
