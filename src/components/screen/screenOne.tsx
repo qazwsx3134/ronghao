@@ -300,22 +300,22 @@ export default component$(() => {
           </div>
         </div>
         <div class="fixed bottom-14 w-full h-12 z-30 flex items-end">
-          <div class="marqueeContainer relative overflow-hidden flex items-center w-full mx-24 border-t border-b border-white border-double font-digi text-xl tracking-wide">
-            <div class="marqueeText flex-[0_0_33%] py-1 flex justify-center">
-              <span class="inline-flex text-gray-500">
+          <div class="marqueeContainer relative overflow-hidden flex items-center w-full mx-24 border-t border-b border-white border-double font-digi text-lg tracking-wide">
+            <div class="marqueeText flex-[0_0_40%] py-1 flex justify-center">
+              <span class="inline-flex">
                 Specialize in design
               </span>
               &nbsp;
               <span class="inline-flex">Modern Dynamic Website</span>
             </div>
-            <div class="marqueeText flex-[0_0_33%] py-1 flex">
+            <div class="marqueeText flex-[0_0_40%] py-1 flex ">
               CREATIVE STUDIO
             </div>
-            <div class="marqueeText flex-[0_0_33%] py-1 flex">
-              <span class="inline-flex text-gray-500">For Company&nbsp;</span>
+            <div class="marqueeText flex-[0_0_40%] py-1 flex">
+              <span class="inline-flex">For Company&nbsp;</span>
               <span class="inline-flex">with taste </span>
             </div>
-            <div class="marqueeText flex-[0_0_33%] py-1 flex">
+            <div class="marqueeText flex-[0_0_40%] py-1 flex">
               Fastest framework, Fast development
             </div>
           </div>
