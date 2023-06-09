@@ -19,6 +19,12 @@ module.exports = {
       },
       fontFamily: {
         digi: ["Orbitron", "sans-serif"],
+      },
+      boxShadow: {
+        glow: [
+          "0 4px 8px  #00fff3",
+          "0 6px 20px #00fff3",
+        ],
       }
     },
   },

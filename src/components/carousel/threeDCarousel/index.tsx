@@ -9,6 +9,49 @@ import {
 
 import { gsap } from "gsap";
 
+const carouselData = [
+  {
+    pcMockup: "/images/pc_mockup_1.webp",
+    mobileMockup: "/images/mobile_mockup_1.webp",
+    colorMockup: "/images/color_mockup_1.webp",
+    title: "Vibrant car website design",
+    description: "Using vibrant color and simple design to catch visitors eyes",
+    tags: ["Qwik", "Midjourney", "Figma"],
+  },
+  {
+    pcMockup: "/images/pc_mockup_1.webp",
+    mobileMockup: "/images/mobile_mockup_1.webp",
+    colorMockup: "/images/color_mockup_1.webp",
+    title: "Vibrant car website design",
+    description: "Using vibrant color and simple design to catch visitors eyes",
+    tags: ["Qwik", "Midjourney", "Figma"],
+  },
+  {
+    pcMockup: "/images/pc_mockup_1.webp",
+    mobileMockup: "/images/mobile_mockup_1.webp",
+    colorMockup: "/images/color_mockup_1.webp",
+    title: "Vibrant car website design",
+    description: "Using vibrant color and simple design to catch visitors eyes",
+    tags: ["Qwik", "Midjourney", "Figma"],
+  },
+  {
+    pcMockup: "/images/pc_mockup_1.webp",
+    mobileMockup: "/images/mobile_mockup_1.webp",
+    colorMockup: "/images/color_mockup_1.webp",
+    title: "Vibrant car website design",
+    description: "Using vibrant color and simple design to catch visitors eyes",
+    tags: ["Qwik", "Midjourney", "Figma"],
+  },
+  {
+    pcMockup: "/images/pc_mockup_1.webp",
+    mobileMockup: "/images/mobile_mockup_1.webp",
+    colorMockup: "/images/color_mockup_1.webp",
+    title: "Vibrant car website design",
+    description: "Using vibrant color and simple design to catch visitors eyes",
+    tags: ["Qwik", "Midjourney", "Figma"],
+  },
+];
+
 export default component$(() => {
   const carouselTimelineStore = useStore<{
     carouselTimeline: NoSerialize<gsap.core.Timeline>;
@@ -43,11 +86,15 @@ export default component$(() => {
         rotationY: (index * 360) / GsapCarouselItems.length,
         transformOrigin: "50% 50% " + -carouselRadius,
       });
+    });
 
+    GsapCarouselItems.forEach(function (e) {
+      // descrimate unknown type
+      const element = e as HTMLElement;
       carouselTimeline.to(
         element,
         {
-          duration: 15,
+          duration: 30,
           repeat: -1,
           rotationY: "-=360",
           ease: "none",
@@ -62,28 +109,53 @@ export default component$(() => {
   return (
     <>
       {/* height can control the perspective Y */}
-      <div class="GsapCarouselWrapper mx-auto flex justify-center relative antialiased my-[200px] h-[600px] w-full">
-        <div
-          class="absolute GsapCarouselItem hover:cursor-pointer bg-gradient-to-br  from-green-500  rounded-lg"
-          onMouseEnter$={stopCarousel}
-          onMouseLeave$={playCarousel}
-        >
-          <div class="card w-96 glass">
-            <figure>
-              <img
-                src="https://images.unsplash.com/photo-1686040068882-1ecdf4e25549?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
-                alt="car!"
-              />
-            </figure>
-            <div class="card-body">
-              <h2 class="card-title">Life hack</h2>
-              <p>How to park your car at your garage?</p>
-              <div class="card-actions justify-end">
-                <button class="btn btn-primary">Learn now!</button>
+      <div class="GsapCarouselWrapper mx-auto flex justify-center relative antialiased my-[200px] h-[600px] w-full rotate-[15deg]">
+        {carouselData.map((item) => (
+          <>
+            <div
+              class="absolute GsapCarouselItem pl-6 pr-16 inline-block hover:cursor-pointer rounded-lg bg-transparent hover:shadow-glow -rotate-[15deg]"
+              onMouseEnter$={stopCarousel}
+              onMouseLeave$={playCarousel}
+            >
+              <div class="card rotate-[12deg]">
+                <figure class="flex overflow-visible relative z-[11]">
+                  <img
+                    class="w-[400px] -rotate-12 translate-y-4"
+                    width={500}
+                    height={488}
+                    src={item.pcMockup}
+                    alt="car!"
+                  />
+                  <div>
+                    <img
+                      class="w-[100px] -rotate-12 translate-x-3 "
+                      width={180}
+                      height={320}
+                      src={item.colorMockup}
+                      alt="car!"
+                    />
+                    <img
+                      class="w-[100px] translate-x-3 translate-y-5"
+                      width={400}
+                      height={800}
+                      src={item.mobileMockup}
+                      alt="car!"
+                    />
+                  </div>
+                </figure>
+                <div class="card-body rounded-xl relative z-10 -rotate-12">
+                  <h2 class="card-title">{item.title}</h2>
+                  <p>{item.description}</p>
+                  <p class="mt-2 flex gap-1">
+                    {item.tags.map((tag) => (
+                      <kbd class="kbd w-auto">{tag}</kbd>
+                    ))}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          </>
+        ))}
       </div>
     </>
   );
