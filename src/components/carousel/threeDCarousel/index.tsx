@@ -70,7 +70,7 @@ export default component$(() => {
   useVisibleTask$(() => {
     // 3. 3D Carousel
     const GsapCarouselItems = gsap.utils.toArray(".GsapCarouselItem");
-    const carouselRadius = 500;
+    const carouselRadius = 550;
     const carouselTimeline = gsap.timeline();
 
     carouselTimeline.set(".GsapCarouselWrapper", {
@@ -113,7 +113,7 @@ export default component$(() => {
         {carouselData.map((item) => (
           <>
             <div
-              class="absolute GsapCarouselItem pl-6 pr-16 inline-block hover:cursor-pointer rounded-lg bg-transparent hover:shadow-glow -rotate-[15deg]"
+              class="absolute GsapCarouselItem pl-6 pr-16 inline-block hover:cursor-pointer rounded-lg bg-transparent hover:shadow-glow -rotate-[10deg]"
               onMouseEnter$={stopCarousel}
               onMouseLeave$={playCarousel}
             >
