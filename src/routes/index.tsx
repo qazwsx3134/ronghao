@@ -1,4 +1,4 @@
-import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useVisibleTask$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
 import { gsap } from "gsap";
@@ -237,9 +237,9 @@ export default component$(() => {
 
   return (
     <>
-      {/* <ScreenOne /> */}
+      <ScreenOne />
       {/* Screen one回來的時候記得把section的hidden加回 */}
-      <section class="webBody w-full h-[900vh] min-h-screen relative">
+      <section class="webBody hidden w-full h-[900vh] min-h-screen relative">
         {/* Left side */}
         <div class="w-[33vw] h-[100vh] sticky top-0  flex flex-col justify-center items-start z-20 pointer-events-none">
           <PcTextHud />
