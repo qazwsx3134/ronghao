@@ -302,9 +302,7 @@ export default component$(() => {
         <div class="fixed bottom-14 w-full h-12 z-30 flex items-end">
           <div class="marqueeContainer relative overflow-hidden flex items-center w-full mx-24 border-t border-b border-white border-double font-digi text-lg tracking-wide">
             <div class="marqueeText flex-[0_0_40%] py-1 flex justify-center">
-              <span class="inline-flex">
-                Specialize in design
-              </span>
+              <span class="inline-flex">Specialize in design</span>
               &nbsp;
               <span class="inline-flex">Modern Dynamic Website</span>
             </div>
@@ -329,8 +327,8 @@ export default component$(() => {
               height: "calc(100vh - 4rem)",
             }}
           >
-            <source src="/video/galaxy_scene.webm" type="video/webm" />
             <source src="/video/galaxy_scene.mp4" type="video/mp4" />
+            <source src="/video/galaxy_scene.webm" type="video/webm" />
           </video>
         </div>
       </section>

@@ -5,14 +5,14 @@ import { gsap } from "gsap";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TextPlugin from "gsap/TextPlugin";
-import Lottie from "lottie-web";
+// import Lottie from "lottie-web";
 import ThreeDCarousel from "~/components/carousel/threeDCarousel";
 
 import PcTextHud from "~/components/hud/pcTextHud";
-import { CircularLine } from "~/components/icon/circularLine";
-import { ExcelIcon } from "~/components/icon/ExcelIcon";
-import { JSONIcon } from "~/components/icon/JSONIcon";
-import { ServerIcon } from "~/components/icon/ServerIcon";
+// import { CircularLine } from "~/components/icon/circularLine";
+// import { ExcelIcon } from "~/components/icon/ExcelIcon";
+// import { JSONIcon } from "~/components/icon/JSONIcon";
+// import { ServerIcon } from "~/components/icon/ServerIcon";
 
 import ScreenOne from "~/components/screen/screenOne";
 
@@ -129,109 +129,153 @@ export default component$(() => {
       },
     });
 
-    gsap.fromTo(
-      ".lottie-data-scraping",
-      {
-        visibility: "hidden",
-        opacity: 0,
-        scale: 0.5,
-      },
-      {
-        visibility: "visible",
-        duration: 0.3,
-        scale: 1,
-        opacity: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".crawlerSection",
-          start: "-100 top",
-          end: "bottom top",
-          toggleActions: "play none none none",
-          markers: true,
-        },
-        onComplete: () => {
-          scrape.play();
-          gsap.fromTo(
-            ".circular-line",
-            {
-              visibility: "hidden",
-              opacity: 0,
-            },
-            {
-              visibility: "visible",
-              opacity: 1,
-              duration: 0.3,
-            }
-          );
-          gsap.to(".circular-line", {
-            strokeDashoffset: -480,
-            repeat: -1,
-            ease: "none",
-            duration: 6,
-          });
+    // gsap.fromTo(
+    //   ".lottie-data-scraping",
+    //   {
+    //     visibility: "hidden",
+    //     opacity: 0,
+    //     scale: 0.5,
+    //   },
+    //   {
+    //     visibility: "visible",
+    //     duration: 0.3,
+    //     scale: 1,
+    //     opacity: 1,
+    //     ease: "none",
+    //     scrollTrigger: {
+    //       trigger: ".crawlerSection",
+    //       start: "-100 top",
+    //       end: "bottom top",
+    //       toggleActions: "play none none none",
+    //       markers: true,
+    //     },
+    //     onComplete: () => {
+    //       scrape.play();
+    //       gsap.fromTo(
+    //         ".circular-line",
+    //         {
+    //           visibility: "hidden",
+    //           opacity: 0,
+    //         },
+    //         {
+    //           visibility: "visible",
+    //           opacity: 1,
+    //           duration: 0.3,
+    //         }
+    //       );
+    //       gsap.to(".circular-line", {
+    //         strokeDashoffset: -480,
+    //         repeat: -1,
+    //         ease: "none",
+    //         duration: 6,
+    //       });
 
-          gsap.utils.toArray(".translate-icon").forEach((e, index) => {
-            const element = e as HTMLElement;
-            gsap.to(element, {
-              visibility: "visible",
-              duration: 5,
-              repeat: -1,
-              delay: index * 1,
-              ease: "none",
-              motionPath: {
-                path: ".anime-line",
-                align: ".anime-line",
-                alignOrigin: [0.5, 0.5],
+    //       gsap.utils.toArray(".translate-icon").forEach((e, index) => {
+    //         const element = e as HTMLElement;
+    //         gsap.to(element, {
+    //           visibility: "visible",
+    //           duration: 5,
+    //           repeat: -1,
+    //           delay: index * 1,
+    //           ease: "none",
+    //           motionPath: {
+    //             path: ".anime-line",
+    //             align: ".anime-line",
+    //             alignOrigin: [0.5, 0.5],
+    //           },
+    //         });
+    //       });
+
+    //       gsap.fromTo(
+    //         ".server-icon",
+    //         {
+    //           visibility: "hidden",
+    //           opacity: 0,
+    //         },
+    //         {
+    //           visibility: "visible",
+    //           opacity: 1,
+    //           duration: 0.3,
+    //         }
+    //       );
+
+    //       gsap.to(".server-icon", {
+    //         scaleX: 0.95,
+    //         scaleY: 1.05,
+    //         repeat: -1,
+    //         delay: 5,
+    //         ease: "elastic.out(1, 0.3)",
+    //         yoyo: true,
+    //         duration: 0.5,
+    //       });
+
+    //       gsap.fromTo(
+    //         ".server-dot",
+    //         {
+    //           opacity: 0,
+    //         },
+    //         {
+    //           duration: 1,
+    //           opacity: 1,
+    //           repeat: -1,
+    //           yoyo: true,
+    //           stagger: 0.5,
+    //         }
+    //       );
+    //     },
+    //   }
+    // );
+
+    // const scrape = Lottie.loadAnimation({
+    //   container: document.querySelector(".lottie-data-scraping")!,
+    //   renderer: "svg",
+    //   loop: true,
+    //   autoplay: false,
+    //   path: "lottie/lottie-data-scanning.json",
+    // });
+
+    // Bounce in device
+    gsap.utils.toArray(".parallax-device").forEach((e, index) => {
+      const element = e as HTMLElement;
+
+      gsap.fromTo(
+        element,
+        {
+          y: 100,
+          clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+        },
+        {
+          y: 0,
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+          ease: "elastic.out(1, 0.5)",
+          delay: 0.1 * index,
+          duration: 0.6,
+          scrollTrigger: {
+            trigger: ".crawlerSection",
+            start: "top 30%",
+            end: "bottom top",
+            markers: true,
+          },
+          onComplete: () => {
+            const eltl = gsap.timeline({
+              defaults: {
+                ease: "power1.inOut",
+                yoyo: true,
+                repeat: -1,
+                delay: index * 0.1,
               },
             });
-          });
 
-          gsap.fromTo(
-            ".server-icon",
-            {
-              visibility: "hidden",
-              opacity: 0,
-            },
-            {
-              visibility: "visible",
-              opacity: 1,
-              duration: 0.3,
-            }
-          );
-
-          gsap.to(".server-icon", {
-            scaleX: 0.95,
-            scaleY: 1.05,
-            repeat: -1,
-            delay: 5,
-            ease: "elastic.out(1, 0.3)",
-            yoyo: true,
-            duration: 0.5,
-          });
-
-          gsap.fromTo(
-            ".server-dot",
-            {
-              opacity: 0,
-            },
-            {
-              duration: 1,
-              opacity: 1,
-              repeat: -1,
-              yoyo: true,
-              stagger: 0.5,
-            }
-          );
-        },
-      }
-    );
-
-    const scrape = Lottie.loadAnimation({
-      container: document.querySelector(".lottie-data-scraping")!,
-      renderer: "svg",
-      loop: true,
-      autoplay: false,
-      path: "lottie/lottie-data-scanning.json",
+            eltl.to(element, {
+              y: `${index % 2 === 0 ? "-" : "+"}=${(index + 1) * 10}`,
+              x: `${index % 2 === 0 ? "+" : "-"}=${(index + 1) * 15}`,
+              scale: 1 - (5 - index) * 0.04,
+              rotation: "-=5",
+              duration: 3,
+            });
+          },
+        }
+      );
     });
   });
 
@@ -250,12 +294,57 @@ export default component$(() => {
             <ThreeDCarousel />
           </div>
 
-          <div class="crawlerSection w-full h-[1200px] flex flex-col relative bg-gray-950">
+          {/* <div class="crawlerSection w-full h-[1200px] flex flex-col relative bg-gray-950">
             <JSONIcon class="text-6xl translate-icon invisible text-gray-400 relative z-[9]" />
             <ExcelIcon class="text-6xl translate-icon invisible text-emerald-500 relative z-[9]" />
             <CircularLine class="absolute w-[300px] h-[300px] right-[450px] top-[350px] invisible circular-line" />
             <div class="w-[500px] h-[500px] lottie lottie-data-scraping invisible self-end relative z-10"></div>
             <ServerIcon class="w-[450px] h-[300px] server-icon self-center invisible relative z-10 -translate-x-4" />
+          </div> */}
+          <div class="crawlerSection w-full h-[1200px] flex flex-col relative bg-gray-950">
+            <div class="flex relative">
+              {/* Phone 1 */}
+              <div class=" absolute left-[45vw] overflow-hidden parallax-device">
+                <img
+                  class="object-scale-down h-[200px] w-[140px] "
+                  src="/images/s2mock5.webp"
+                  width={505}
+                  height={1023}
+                />
+              </div>
+
+              {/* Laptop1 */}
+              <img
+                class="object-scale-down h-[350px] w-[400px] absolute right-[15vw] top-[50px] -rotate-12 parallax-device"
+                src="/images/s2mock3.webp"
+                width={513}
+                height={498}
+              />
+
+              {/* Laptop2 */}
+              <img
+                class="object-scale-down h-[400px] w-[650px] absolute left-[10vw] top-[100px] rotate-6 parallax-device"
+                src="/images/s2mock2.webp"
+                width={1023}
+                height={632}
+              />
+
+              {/* Phone 2 */}
+              <img
+                class="object-scale-down h-[350px] w-[200px] absolute left-[20vw] top-[400px] -rotate-12 parallax-device"
+                src="/images/s2mock1.webp"
+                width={382}
+                height={1023}
+              />
+
+              {/* Phone 3 */}
+              <img
+                class="object-scale-down h-[500px] w-[240px] absolute right-[20vw] top-[600px] rotate-12 parallax-device"
+                src="/images/s2mock4.webp"
+                width={365}
+                height={894}
+              />
+            </div>
           </div>
         </div>
       </section>
