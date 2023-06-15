@@ -9,7 +9,6 @@ import TextPlugin from "gsap/TextPlugin";
 import ThreeDCarousel from "~/components/carousel/threeDCarousel";
 
 import PcTextHud from "~/components/hud/pcTextHud";
-import { ScanOutlineLT } from "~/components/icon/scanOutlineLeftTop";
 import ScanOverlay from "~/components/overlay/scanOverlay";
 
 // import { CircularLine } from "~/components/icon/circularLine";
