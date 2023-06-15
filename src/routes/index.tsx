@@ -9,6 +9,9 @@ import TextPlugin from "gsap/TextPlugin";
 import ThreeDCarousel from "~/components/carousel/threeDCarousel";
 
 import PcTextHud from "~/components/hud/pcTextHud";
+import { ScanOutlineLT } from "~/components/icon/scanOutlineLeftTop";
+import ScanOverlay from "~/components/overlay/scanOverlay";
+
 // import { CircularLine } from "~/components/icon/circularLine";
 // import { ExcelIcon } from "~/components/icon/ExcelIcon";
 // import { JSONIcon } from "~/components/icon/JSONIcon";
@@ -52,7 +55,6 @@ export default component$(() => {
         start: "top top",
         end: "bottom top",
         toggleActions: "restart none restart reverse",
-        markers: true,
       },
     });
     gsap.to(".hudM", {
@@ -66,7 +68,6 @@ export default component$(() => {
         start: "top top",
         end: "bottom top",
         toggleActions: "restart none restart reverse",
-        markers: true,
       },
     });
     gsap.to(".hudB", {
@@ -80,7 +81,6 @@ export default component$(() => {
         start: "top top",
         end: "bottom top",
         toggleActions: "restart none restart reverse",
-        markers: true,
       },
     });
 
@@ -97,7 +97,6 @@ export default component$(() => {
         start: "top top",
         end: "bottom top",
         toggleActions: "restart none restart none",
-        markers: true,
       },
     });
     gsap.to(".hudM", {
@@ -111,7 +110,6 @@ export default component$(() => {
         start: "top top",
         end: "bottom top",
         toggleActions: "restart none restart none",
-        markers: true,
       },
     });
     gsap.to(".hudB", {
@@ -125,7 +123,6 @@ export default component$(() => {
         start: "top top",
         end: "bottom top",
         toggleActions: "restart none restart none",
-        markers: true,
       },
     });
 
@@ -252,9 +249,8 @@ export default component$(() => {
           duration: 0.6,
           scrollTrigger: {
             trigger: ".crawlerSection",
-            start: "top 30%",
+            start: "top 70%",
             end: "bottom top",
-            markers: true,
           },
           onComplete: () => {
             const eltl = gsap.timeline({
@@ -273,6 +269,54 @@ export default component$(() => {
               rotation: "-=5",
               duration: 3,
             });
+          },
+        }
+      );
+    });
+
+    // Scan animation
+    gsap.utils.toArray(".outlineAnim").forEach((e) => {
+      const element = e as HTMLElement;
+
+      gsap.fromTo(
+        element,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          ease: "ease",
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: ".crawlerSection",
+            start: "top 70%",
+            end: "30% top",
+            scrub: true,
+          },
+        }
+      );
+    });
+
+    gsap.utils.toArray(".scanAnim").forEach((e) => {
+      const element = e as HTMLElement;
+
+      gsap.fromTo(
+        element,
+        {
+          top: "0%",
+        },
+        {
+          top: "100%",
+          ease: "ease",
+          yoyo: true,
+          repeat: 2,
+          duration: 0.8,
+          scrollTrigger: {
+            trigger: ".crawlerSection",
+            start: "top 70%",
+            end: "bottom 30%",
+            toggleActions: "restart none restart none",
+            markers: true,
           },
         }
       );
@@ -304,7 +348,12 @@ export default component$(() => {
           <div class="crawlerSection w-full h-[1200px] flex flex-col relative bg-gray-950">
             <div class="flex relative">
               {/* Phone 1 */}
-              <div class=" absolute left-[45vw] overflow-hidden parallax-device">
+              <div class="absolute left-[45vw] p-4 parallax-device">
+                <ScanOverlay
+                  outlineClass={["w-10", "h-10", "outlineAnim"]}
+                  scanClass={["scanAnim"]}
+                />
+
                 <img
                   class="object-scale-down h-[200px] w-[140px] "
                   src="/images/s2mock5.webp"
@@ -314,12 +363,18 @@ export default component$(() => {
               </div>
 
               {/* Laptop1 */}
-              <img
-                class="object-scale-down h-[350px] w-[400px] absolute right-[15vw] top-[50px] -rotate-12 parallax-device"
-                src="/images/s2mock3.webp"
-                width={513}
-                height={498}
-              />
+              <div class="absolute right-[15vw] top-[50px] p-4 parallax-device">
+                <ScanOverlay
+                  outlineClass={["w-10", "h-10", "outlineAnim"]}
+                  scanClass={["w-full", "scanAnim"]}
+                />
+                <img
+                  class="object-scale-down h-[350px] w-[400px]"
+                  src="/images/s2mock3.webp"
+                  width={513}
+                  height={498}
+                />
+              </div>
 
               {/* Laptop2 */}
               <img

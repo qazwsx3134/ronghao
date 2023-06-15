@@ -328,7 +328,7 @@ export default component$(() => {
             }}
           >
             <source src="/video/galaxy_scene.mp4" type="video/mp4" />
-            <source src="/video/galaxy_scene.webm" type="video/webm" />
+            {/* <source src="/video/galaxy_scene.webm" type="video/webm" /> */}
           </video>
         </div>
       </section>
