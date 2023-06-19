@@ -11,7 +11,7 @@ interface Props {
 }
 export default component$<Props>((props) => {
   return (
-    <>
+    <div>
       <Scanline class={["absolute", "top-0", "left-0", ...props.scanClass]} />
       <ScanOutlineLT
         class={["absolute", "top-0", "left-0", ...props.outlineClass]}
@@ -25,6 +25,6 @@ export default component$<Props>((props) => {
       <ScanOutlineRB
         class={["absolute", "bottom-0", "right-0", ...props.outlineClass]}
       />
-    </>
+    </div>
   );
 });

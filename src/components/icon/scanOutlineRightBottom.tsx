@@ -16,13 +16,13 @@ export function ScanOutlineRB(
     >
       <path
         d="M97 17V97H17"
-        stroke="#73E5FE"
+        stroke="#10B981"
         stroke-width="7"
         stroke-linecap="round"
       />
       <path
         d="M4 124L124 124L124 4"
-        stroke="#73E5FE"
+        stroke="#6EE7B7"
         stroke-width="8"
         stroke-linecap="round"
       />

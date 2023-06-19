@@ -18,12 +18,12 @@ module.exports = {
         hudGreen: "linear-gradient(270deg, #27612F 35.19%, #3C783D 53.7%)"
       },
       fontFamily: {
-        digi: ["Orbitron", "sans-serif"],
+        digi: ["Orbitron", "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial","sans-serif"],
       },
       boxShadow: {
         glow: [
-          "0 4px 8px  #00fff3",
-          "0 6px 20px #00fff3",
+          "0 4px 8px  #10B981",
+          "0 6px 20px #6EE7B7",
         ],
       }
     },

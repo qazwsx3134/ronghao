@@ -73,9 +73,14 @@ export default component$(() => {
     const carouselRadius = 550;
     const carouselTimeline = gsap.timeline();
 
-    carouselTimeline.set(".GsapCarouselWrapper", {
+    carouselTimeline.set([".GsapCarouselWrapper", ".blurMask"], {
       perspective: 1100,
       transformStyle: "preserve-3d",
+    });
+
+    carouselTimeline.set(".blurMask", {
+      translateY: -100,
+      translateZ: -500,
     });
 
     // Set initial rotation
@@ -88,15 +93,15 @@ export default component$(() => {
       });
     });
 
-    GsapCarouselItems.forEach(function (e) {
+    GsapCarouselItems.forEach((e) => {
       // descrimate unknown type
       const element = e as HTMLElement;
       carouselTimeline.to(
         element,
         {
           duration: 30,
-          repeat: -1,
           rotationY: "-=360",
+          repeat: -1,
           ease: "none",
         },
         "0"
@@ -110,10 +115,11 @@ export default component$(() => {
     <>
       {/* height can control the perspective Y */}
       <div class="GsapCarouselWrapper mx-auto flex justify-center relative antialiased my-[200px] h-[600px] w-full rotate-[15deg]">
+        <div class="w-[1000px] h-[600px] absolute top-[50px] -rotate-[15deg] backdrop-blur-sm blurMask"></div>
         {carouselData.map((item) => (
           <>
             <div
-              class="absolute GsapCarouselItem pl-6 pr-16 inline-block hover:cursor-pointer rounded-lg bg-transparent hover:shadow-glow -rotate-[10deg]"
+              class="absolute GsapCarouselItem pl-6 pr-16 inline-block hover:cursor-pointer rounded-lg bg-transparent hover:shadow-glow hover -rotate-[10deg]"
               onMouseEnter$={stopCarousel}
               onMouseLeave$={playCarousel}
             >

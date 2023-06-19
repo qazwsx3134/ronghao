@@ -16,13 +16,13 @@ export function ScanOutlineLT(
     >
       <path
         d="M31 111V31H111"
-        stroke="#73E5FE"
+        stroke="#10B981"
         stroke-width="7"
         stroke-linecap="round"
       />
       <path
         d="M124 4H4V124"
-        stroke="#73E5FE"
+        stroke="#6EE7B7"
         stroke-width="8"
         stroke-linecap="round"
       />

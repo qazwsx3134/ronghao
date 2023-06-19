@@ -27,18 +27,23 @@ export default component$(() => {
   });
   return (
     <>
-      <main class="flex flex-col h-full min-h-screen">
+      <main class="flex flex-col h-full min-h-screen ">
         <div class="pointer-events-none fixed h-full w-full z-[11] bg-black"></div>
         <div class="fixed h-28 w-full flex px-12 pt-12 items-center z-50">
           {/* Logo */}
           <button class="btn btn-ghost logoBtn invisible w-42 h-20">
             <a href="/" class="font-digi text-right">
-              <img src="/images/logo.webp" alt="" width={160} height={52} class="w-[100px]"/>
+              <img
+                src="/images/logo.webp"
+                alt=""
+                width={160}
+                height={52}
+                class="w-[100px]"
+              />
               Design
             </a>
           </button>
         </div>
-        <div class="fixed bottom-0 h-20 w-full flex px-12 items-center z-40 backdrop-blur-sm"></div>
         <div class="z-40 relative w-full h-full grow">
           <Slot />
         </div>
