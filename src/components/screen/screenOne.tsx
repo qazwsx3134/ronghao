@@ -26,9 +26,9 @@ export default component$(() => {
   useStylesScoped$(`
     .neonText {
       text-shadow:
-          0 0 2px #fb923c,
-          0 0 7px #fb923c,
-          0 0 12px #fb923c;
+          0 0 2px #6EE7B7,
+          0 0 7px #6EE7B7,
+          0 0 12px #6EE7B7;
       color: #fff;
     }
 

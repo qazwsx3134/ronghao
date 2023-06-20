@@ -78,11 +78,11 @@ body {
   height: 100%;
 }
 
-code {
+/* code {
   background: rgba(230, 230, 230, 0.3);
   border-radius: 4px;
   padding: 2px 6px;
-}
+} */
 
 /* 所有瀏覽器 */
 *::-webkit-scrollbar {
@@ -143,6 +143,6 @@ code {
 
 @layer components {
   .gradient-emerald {
-    @apply bg-gradient-to-r from-emerald-700 to-emerald-900
+    @apply bg-gradient-to-r from-emerald-700 to-emerald-900;
   }
 }
