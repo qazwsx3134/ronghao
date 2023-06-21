@@ -154,9 +154,9 @@ export default component$(() => {
     });
 
     // 3. Robot
-    const crawlerText = new SplitType("#crawlerTitle");
+    const robotText = new SplitType("#robotTitle");
 
-    gsap.from(crawlerText.chars, {
+    gsap.from(robotText.chars, {
       webkitTextStrokeColor: "#6EE7B7",
       opacity: 0,
       yPercent: -90,
