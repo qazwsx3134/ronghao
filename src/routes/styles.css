@@ -202,3 +202,31 @@ button.button-small {
   -webkit-text-stroke: 1px #fafafa;
   -webkit-text-fill-color: transparent;
 }
+
+.polka {
+  background-image: radial-gradient(
+      rgb(255, 255, 255, 0.1) 14%,
+      transparent 14%
+    ),
+    radial-gradient(rgb(255, 255, 255, 0.1) 14%, transparent 14%);
+  background-position: 0px 0px, 4px 4px;
+  background-size: 8px 8px;
+}
+
+.polka-background {
+  background-image: linear-gradient(
+    to left top,
+    #0d210f,
+    #0e1e0f,
+    #0f1c10,
+    #101910,
+    #101610,
+    #10130e,
+    #10110d,
+    #0e0e0c,
+    #0c0b09,
+    #080706,
+    #040303,
+    #000000
+  );
+}

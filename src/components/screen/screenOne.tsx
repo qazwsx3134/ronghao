@@ -288,7 +288,7 @@ export default component$(() => {
           class="aspect-square rotate-[20deg] iconElement"
         />
       </PlainBackground>
-      <section id="ScreenOne" class="w-full h-full flex min-h-screen">
+      <section id="ScreenOne" class="w-full h-full flex min-h-screen bg-black">
         <PcHud onDone={onDone} onRevert={onRevert} />
         <div class=" w-full h-full z-50 relative flex items-center justify-center grow min-h-screen">
           <div class="HUDTextContainer flex flex-col justify-around items-center w-[800px] h-[300px] p-4 backdrop-blur-md rounded-md invisible">

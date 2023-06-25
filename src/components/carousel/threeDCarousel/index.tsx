@@ -115,7 +115,7 @@ export default component$(() => {
     <>
       {/* height can control the perspective Y */}
       <div class="GsapCarouselWrapper mx-auto flex justify-center relative antialiased my-[200px] h-[600px] w-full rotate-[15deg]">
-        <div class="w-[1000px] h-[600px] absolute top-[50px] -rotate-[15deg] backdrop-blur-sm blurMask"></div>
+        <div class="w-[1000px] h-[600px] absolute top-[50px] -rotate-[15deg] backdrop-blur-[2px] blurMask"></div>
         {carouselData.map((item) => (
           <>
             <div

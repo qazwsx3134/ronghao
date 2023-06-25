@@ -27,8 +27,10 @@ export default component$(() => {
   });
   return (
     <>
-      <main class="flex flex-col h-full min-h-screen ">
-        <div class="pointer-events-none fixed h-full w-full z-[11] bg-black"></div>
+      {/* Will use gsap to add .polka-background */}
+      <main class="mainContainer flex flex-col h-full min-h-screen polka-background">
+        {/* will add .polka */}
+        <div class="mainLayer pointer-events-none fixed h-full w-full z-[11] blur-[1px] polka"></div>
         <div class="fixed h-28 w-full flex px-12 pt-12 items-center z-50">
           {/* Logo */}
           <button class="btn btn-ghost logoBtn invisible w-42 h-20">
