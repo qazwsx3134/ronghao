@@ -55,7 +55,7 @@ export default component$(() => {
           <div class="h-14 w-[3px] rounded-[0.5px] gradient-emerald opacity-40" />
           <div class="h-[52px] w-[3px] rounded-[0.5px] gradient-emerald opacity-25" />
           <div class="ml-4 p-1 h-full flex grow ">
-            <h4 class="hudB text-xl text-emerald-500 opacity-20 textShadow">
+            <h4 class="hudB text-xl text-emerald-500 opacity-40 textShadow">
               Empowering your business
             </h4>
           </div>

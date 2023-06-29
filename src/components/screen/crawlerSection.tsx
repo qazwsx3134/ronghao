@@ -110,8 +110,7 @@ export default component$(() => {
         trigger: ".mockup-code",
         start: "top 70%",
         end: "bottom top",
-        toggleActions: "restart none restart none",
-        markers: true,
+        toggleActions: "restart none none none",
       },
     });
 
@@ -134,9 +133,13 @@ export default component$(() => {
       ease: "none",
     });
 
-    crawlerTextTL.set(".code2-wrapper", {
-      display: "flex",
-    },"+=0.3");
+    crawlerTextTL.set(
+      ".code2-wrapper",
+      {
+        display: "flex",
+      },
+      "+=0.3"
+    );
 
     crawlerTextTL.to(".code2", {
       duration: 0.5,
@@ -161,9 +164,13 @@ export default component$(() => {
       ">+0.3"
     );
 
-    crawlerTextTL.set(".code3-wrapper", {
-      display: "flex",
-    }, "+=0.3");
+    crawlerTextTL.set(
+      ".code3-wrapper",
+      {
+        display: "flex",
+      },
+      "+=0.3"
+    );
 
     crawlerTextTL.to(".code3", {
       duration: 0.5,
@@ -187,9 +194,13 @@ export default component$(() => {
       className: "text-black bg-white",
     });
 
-    crawlerTextTL.set(".code4-wrapper", {
-      display: "flex",
-    }, "+=0.3");
+    crawlerTextTL.set(
+      ".code4-wrapper",
+      {
+        display: "flex",
+      },
+      "+=0.3"
+    );
 
     crawlerTextTL.to(".code4", {
       duration: 0.5,
@@ -209,9 +220,13 @@ export default component$(() => {
       ease: "none",
     });
 
-    crawlerTextTL.set(".code4-wrapper", {
-      className: "text-black bg-white",
-    }, "+=0.3");
+    crawlerTextTL.set(
+      ".code4-wrapper",
+      {
+        className: "text-black bg-white",
+      },
+      "+=0.3"
+    );
 
     crawlerTextTL.set(".code5-wrapper", {
       display: "flex",
@@ -235,9 +250,13 @@ export default component$(() => {
       ease: "none",
     });
 
-    crawlerTextTL.set(".code5-wrapper", {
-      className: "text-black bg-white",
-    }, "+=0.3");
+    crawlerTextTL.set(
+      ".code5-wrapper",
+      {
+        className: "text-black bg-white",
+      },
+      "+=0.3"
+    );
 
     crawlerTextTL.set(".code6-wrapper", {
       display: "flex",
@@ -252,9 +271,13 @@ export default component$(() => {
       ease: "none",
     });
 
-    crawlerTextTL.set(".code7-wrapper", {
-      display: "flex",
-    }, "+=0.3");
+    crawlerTextTL.set(
+      ".code7-wrapper",
+      {
+        display: "flex",
+      },
+      "+=0.3"
+    );
 
     crawlerTextTL.fromTo(
       ".code7-cursor",

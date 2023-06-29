@@ -4,6 +4,6 @@
 2. i18n
 3. RWD
 4. Let's work together
-5. onLoad才切動畫
-6. 爬蟲Python JS LineBot TelegramBot OpenAI Website design
-
+5. onLoad 才切動畫
+6. 爬蟲 Python JS LineBot TelegramBot OpenAI Website design
+7. 把 robot section 的圖變 webp

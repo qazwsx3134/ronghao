@@ -11,6 +11,7 @@ import ThreeDCarousel from "~/components/carousel/threeDCarousel";
 
 import PcTextHud from "~/components/hud/pcTextHud";
 import CrawlerSection from "~/components/screen/crawlerSection";
+import RobotSection from "~/components/screen/robotSection";
 
 import ScreenOne from "~/components/screen/screenOne";
 
@@ -171,6 +172,47 @@ export default component$(() => {
       },
     });
 
+    gsap.to(".hudT", {
+      duration: 0.5,
+      text: {
+        value: "Intelligence Robot // AI // Chatbot // Automation",
+        padSpace: true,
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".robotSection",
+        start: "top 50%",
+        end: "bottom top",
+        toggleActions: "restart none restart none",
+      },
+    });
+    gsap.to(".hudM", {
+      duration: 0.5,
+      text: {
+        value: "24/7 Intelligent Robot to help your business",
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".robotSection",
+        start: "top 50%",
+        end: "bottom top",
+        toggleActions: "restart none restart none",
+      },
+    });
+    gsap.to(".hudB", {
+      duration: 0.5,
+      text: {
+        value: "Make your business one of a kind",
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".robotSection",
+        start: "top 50%",
+        end: "bottom top",
+        toggleActions: "restart none restart none",
+      },
+    });
+
     // const scrape = Lottie.loadAnimation({
     //   container: document.querySelector(".lottie-data-scraping")!,
     //   renderer: "svg",
@@ -184,7 +226,7 @@ export default component$(() => {
     <>
       <ScreenOne />
       {/* Screen one回來的時候記得把section的hidden加回 */}
-      <section class="webBody hidden w-full h-[900vh] min-h-screen relative">
+      <section class="webBody hidden w-full h-[700vh] min-h-screen relative">
         {/* Left side */}
         <div class="w-[33vw] h-[100vh] sticky top-0  flex flex-col justify-center items-start z-20 pointer-events-none">
           <PcTextHud />
@@ -218,12 +260,14 @@ export default component$(() => {
 
           <div class="robotSection w-full h-[1600px] flex flex-col items-center relative">
             <h2
-              id="crawlerTitle"
+              id="robotTitle"
               class="mt-8 mb-24 pt-3 text-6xl font-bold tracking-wider text-outline"
             >
-              Robot
+              Intelligence Robot
             </h2>
-            <div class="flex flex-col grow w-full"></div>
+            <div class="flex flex-col grow w-full">
+              <RobotSection />
+            </div>
           </div>
         </div>
       </section>

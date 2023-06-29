@@ -20,7 +20,7 @@ import BlackholeOriginal from "~/components/loader/LoaderIcon/blackhole/blackhol
 
 import horizontalLoop from "~/utils/horizontalLoop";
 
-const wordsSet = ["Web develop", "Animation design", "Web design"];
+const wordsSet = ["Web design", "Animation design", "System design"];
 
 export default component$(() => {
   useStylesScoped$(`
