@@ -291,7 +291,7 @@ export default component$(() => {
       <section id="ScreenOne" class="w-full h-full flex min-h-screen bg-black">
         <PcHud onDone={onDone} onRevert={onRevert} />
         <div class=" w-full h-full z-50 relative flex items-center justify-center grow min-h-screen">
-          <div class="HUDTextContainer flex flex-col justify-around items-center w-[800px] h-[300px] p-4 backdrop-blur-md rounded-md invisible">
+          <div class="HUDTextContainer flex flex-col justify-around items-center w-[800px] h-[300px] p-4 backdrop-blur-sm rounded-md invisible ">
             <h1 class="text-5xl font-bold relative font-digi text-center w-full leading-normal">
               <div class="hi neonText"></div>
               <span class="text neonText"></span>
@@ -326,9 +326,10 @@ export default component$(() => {
             style={{
               height: "calc(100vh - 4rem)",
             }}
+            playsInline
           >
+            <source src="/video/galaxy_scene.webm" type="video/webm" />
             <source src="/video/galaxy_scene.mp4" type="video/mp4" />
-            {/* <source src="/video/galaxy_scene.webm" type="video/webm" /> */}
           </video>
         </div>
       </section>
