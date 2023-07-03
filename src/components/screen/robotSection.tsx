@@ -66,7 +66,7 @@ export default component$(() => {
       <div class="camera"></div>
       <div class="display h-full">
         <div
-          class="artboard artboard-demo w-[500px] h-[1200px] justify-start pt-6"
+          class="artboard artboard-demo w-[500px] h-[1200px] justify-start p-4 pt-6"
           style={{
             alignItems: "initial",
           }}
@@ -75,7 +75,7 @@ export default component$(() => {
             <div class="chat-header">7x24⚡World Stock Intelligence News</div>
             <div class="chat-image avatar">
               <div class="w-10 rounded-full">
-                <img src="/images/robot-avatar.png" />
+                <img src="/images/robot-avatar.webp" />
               </div>
             </div>
             <div class="chat-bubble">
@@ -108,7 +108,7 @@ export default component$(() => {
             </div>
             <div class="chat-image avatar">
               <div class="w-10 rounded-full">
-                <img src="/images/robot-avatar.png" />
+                <img src="/images/robot-avatar.webp" />
               </div>
             </div>
             <div class="chat-bubble">
@@ -138,11 +138,11 @@ export default component$(() => {
             <div class="chat-header">⚡Stock market Intelligence Robot⚡</div>
             <div class="chat-image avatar">
               <div class="w-10 rounded-full">
-                <img src="/images/stock-avatar.png" />
+                <img src="/images/stock-avatar.webp" />
               </div>
             </div>
             <div class="chat-bubble">
-              <img src="/images/stock-image.jpg" width={200} />
+              <img src="/images/stock-image.webp" width={200} />
             </div>
           </div>
 
@@ -150,7 +150,7 @@ export default component$(() => {
             <div class="chat-header">⚡Stock market Intelligence Robot⚡</div>
             <div class="chat-image avatar">
               <div class="w-10 rounded-full">
-                <img src="/images/stock-avatar.png" />
+                <img src="/images/stock-avatar.webp" />
               </div>
             </div>
             <div class="chat-bubble text-base chat-bubble-error">
@@ -169,10 +169,10 @@ export default component$(() => {
             <div class="chat-header">⚡Chat Intelligence Robot⚡</div>
             <div class="chat-image avatar">
               <div class="w-10 rounded-full">
-                <img src="/images/stock-avatar.png" />
+                <img src="/images/stock-avatar.webp" />
               </div>
             </div>
-            <div class="chat-bubble text-base chat-bubble-error">
+            <div class="chat-bubble text-base">
               1.00 US Dollar = 144.43008 Japanese Yen
               <br />
               1 JPY = 0.00692377 USD

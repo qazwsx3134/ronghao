@@ -166,7 +166,7 @@ export default component$(() => {
       stagger: 0.05,
       ease: "back.out",
       scrollTrigger: {
-        trigger: ".crawlerSection",
+        trigger: ".robotSection",
         start: "top 50%",
         end: "bottom top",
       },
@@ -213,6 +213,24 @@ export default component$(() => {
       },
     });
 
+    // 4. Contact
+    const contactText = new SplitType("#contactTitle");
+
+    gsap.from(contactText.chars, {
+      webkitTextStrokeColor: "#6EE7B7",
+      opacity: 0,
+      yPercent: -90,
+      rotateX: 90,
+      duration: 0.6,
+      stagger: 0.05,
+      ease: "back.out",
+      scrollTrigger: {
+        trigger: ".contactSection",
+        start: "top 50%",
+        end: "bottom top",
+      },
+    });
+
     // const scrape = Lottie.loadAnimation({
     //   container: document.querySelector(".lottie-data-scraping")!,
     //   renderer: "svg",
@@ -224,9 +242,9 @@ export default component$(() => {
 
   return (
     <>
-      <ScreenOne />
+      {/* <ScreenOne /> */}
       {/* Screen one回來的時候記得把section的hidden加回 */}
-      <section class="webBody hidden w-full h-[700vh] min-h-screen relative">
+      <section class="webBody  w-full h-[6000px] min-h-screen relative">
         {/* Left side */}
         <div class="w-[33vw] h-[100vh] sticky top-0  flex flex-col justify-center items-start z-20 pointer-events-none">
           <PcTextHud />
@@ -258,7 +276,7 @@ export default component$(() => {
             </div>
           </div>
 
-          <div class="robotSection w-full h-[1600px] flex flex-col items-center relative">
+          <div class="robotSection w-full h-[1400px] flex flex-col items-center relative">
             <h2
               id="robotTitle"
               class="mt-8 mb-24 pt-3 text-6xl font-bold tracking-wider text-outline"
@@ -268,6 +286,16 @@ export default component$(() => {
             <div class="flex flex-col grow w-full">
               <RobotSection />
             </div>
+          </div>
+
+          <div class="contactSection w-full h-[1600px] flex flex-col items-center relative">
+            <h2
+              id="contactTitle"
+              class="mt-8 mb-24 pt-3 text-6xl font-bold tracking-wider text-outline"
+            >
+              Contact us
+            </h2>
+            <div class="flex flex-col grow w-full items-center"></div>
           </div>
         </div>
       </section>
