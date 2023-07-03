@@ -36,7 +36,7 @@ export default component$(() => {
             <div class="h-full w-full flex flex-col items-start justify-evenly shadow-[inset_0_10px_6px_-12px,_inset_0_-10px_6px_-12px] shadow-emerald-500/60">
               <h4 class="text-xl text-emerald-500 opacity-50">
                 <span>&gt;&gt; </span>
-                <span class="hudMT textShadow">主要支援系統</span>
+                <span class="hudMT textShadow">Main support system</span>
               </h4>
               <h2 class="text-3xl text-emerald-500 opacity-80 textShadow">
                 <span>./</span>

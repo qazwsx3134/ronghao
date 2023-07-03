@@ -7,13 +7,76 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TextPlugin from "gsap/TextPlugin";
 import SplitType from "split-type";
 // import Lottie from "lottie-web";
+
+import { routeLoader$ } from "@builder.io/qwik-city";
+import { z } from "@builder.io/qwik-city";
+
+import { formAction$, zodForm$ } from "@modular-forms/qwik";
+import type { InitialValues } from "@modular-forms/qwik";
+
 import ThreeDCarousel from "~/components/carousel/threeDCarousel";
 
 import PcTextHud from "~/components/hud/pcTextHud";
+import ContactSection from "~/components/screen/contactSection";
 import CrawlerSection from "~/components/screen/crawlerSection";
 import RobotSection from "~/components/screen/robotSection";
 
 import ScreenOne from "~/components/screen/screenOne";
+import { objectToFormData } from "~/utils/form";
+
+export const useContactFormLoader = routeLoader$<InitialValues<ContactForm>>(
+  () => ({
+    name: null,
+    email: "",
+    phoneNumber: null,
+    description: "",
+    preferredContact: null,
+  })
+);
+
+const contactSchema = z.object({
+  name: z.string().nullable(),
+  email: z
+    .string()
+    .min(1, "Please enter your email.")
+    .email("The email address is badly formatted."),
+  phoneNumber: z.string().nullable(),
+  description: z.string(),
+  preferredContact: z.string().nullable(),
+});
+
+export type ContactForm = z.infer<typeof contactSchema>;
+
+export const validateContactForm = zodForm$(contactSchema);
+
+export const useFormAction = formAction$<ContactForm>(async (values) => {
+  // Runs on server
+  // sent to google sheet, and check if any error
+  // if error, return error message
+  console.log(values);
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbw89Luv5y2BN5MyhzA4eltdqtV8yq4aKgnct1Zb5YCEK_IzcFQOpT6DkmVhbminE7w0SA/exec";
+
+  const fData = objectToFormData(values);
+  console.log(fData);
+
+  const res = await fetch(scriptURL, { method: "POST", body: fData })
+    .then((response) => response.json())
+    .catch((error) => error.message);
+
+  if (res?.result === "success") {
+    return {
+      status: "success",
+      message: "Thank you for contacting us. We will get back to you soon.",
+      data: res,
+    };
+  }
+  return {
+    status: "error",
+    message: "Something went wrong.",
+    data: res,
+  };
+}, zodForm$(contactSchema));
 
 export default component$(() => {
   useVisibleTask$(() => {
@@ -231,6 +294,49 @@ export default component$(() => {
       },
     });
 
+    gsap.to(".hudT", {
+      duration: 0.5,
+      text: {
+        value: "Contact us // qazwsx3134@gmail",
+        padSpace: true,
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".contactSection",
+        start: "top 50%",
+        end: "bottom top",
+        toggleActions: "restart none restart none",
+      },
+    });
+    // 幫您打造一個與眾不同的網站，從平凡中脫穎而出．
+    gsap.to(".hudM", {
+      duration: 0.5,
+      text: {
+        value:
+          "crafting a captivating website that attracts and engages customers like never before.",
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".contactSection",
+        start: "top 50%",
+        end: "bottom top",
+        toggleActions: "restart none restart none",
+      },
+    });
+    gsap.to(".hudB", {
+      duration: 0.5,
+      text: {
+        value: "Make your business one of a kind",
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".contactSection",
+        start: "top 50%",
+        end: "bottom top",
+        toggleActions: "restart none restart none",
+      },
+    });
+
     // const scrape = Lottie.loadAnimation({
     //   container: document.querySelector(".lottie-data-scraping")!,
     //   renderer: "svg",
@@ -242,9 +348,9 @@ export default component$(() => {
 
   return (
     <>
-      {/* <ScreenOne /> */}
+      <ScreenOne />
       {/* Screen one回來的時候記得把section的hidden加回 */}
-      <section class="webBody  w-full h-[6000px] min-h-screen relative">
+      <section class="webBody hidden w-full h-[5500px] min-h-screen relative">
         {/* Left side */}
         <div class="w-[33vw] h-[100vh] sticky top-0  flex flex-col justify-center items-start z-20 pointer-events-none">
           <PcTextHud />
@@ -288,14 +394,16 @@ export default component$(() => {
             </div>
           </div>
 
-          <div class="contactSection w-full h-[1600px] flex flex-col items-center relative">
+          <div class="contactSection w-full h-[1000px] flex flex-col items-center relative">
             <h2
               id="contactTitle"
               class="mt-8 mb-24 pt-3 text-6xl font-bold tracking-wider text-outline"
             >
               Contact us
             </h2>
-            <div class="flex flex-col grow w-full items-center"></div>
+            <div class="flex flex-col grow w-full items-center">
+              <ContactSection />
+            </div>
           </div>
         </div>
       </section>

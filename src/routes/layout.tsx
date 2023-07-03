@@ -31,7 +31,7 @@ export default component$(() => {
       <main class="mainContainer flex flex-col h-full min-h-screen polka-background">
         {/* will add .polka */}
         <div class="mainLayer pointer-events-none fixed h-full w-full z-[11] blur-[1px] polka"></div>
-        <div class="fixed h-28 w-full flex px-12 pt-12 items-center z-50">
+        <div class="fixed h-28 w- flex px-12 pt-12 items-center z-50">
           {/* Logo */}
           <button class="btn btn-ghost logoBtn invisible w-42 h-20">
             <a href="/" class="font-digi text-right">

@@ -1,35 +1,30 @@
-import { component$, useVisibleTask$, $ } from "@builder.io/qwik";
-import { routeLoader$, z } from "@builder.io/qwik-city";
-import type { InitialValues, SubmitHandler } from "@modular-forms/qwik";
-import { formAction$, useForm, zodForm$ } from "@modular-forms/qwik";
+import { component$, useVisibleTask$, $, QRL } from "@builder.io/qwik";
+
+import type { SubmitHandler } from "@modular-forms/qwik";
+import { useForm } from "@modular-forms/qwik";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-const contactSchema = z.object({
-  name: z.string().nullable(),
-  email: z
-    .string()
-    .min(1, "Please enter your email.")
-    .email("The email address is badly formatted."),
-  phoneNumber: z.string().nullable(),
-  description: z.string(),
-  preferredContact: z.string().nullable(),
-});
-
-type ContactForm = z.infer<typeof contactSchema>;
-
-export const useFormLoader = routeLoader$<InitialValues<ContactForm>>(() => ({
-  name: null,
-  email: "",
-  phoneNumber: null,
-  description: "",
-  preferredContact: null,
-}));
+import {
+  type ContactForm,
+  useContactFormLoader,
+  useFormAction,
+  validateContactForm,
+} from "~/routes";
 
 export default component$(() => {
-  const [contactForm, { Form, Field, FieldArray }] = useForm<ContactForm>({
-    loader: useFormLoader(),
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [contactForm, { Form, Field }] = useForm<ContactForm>({
+    loader: useContactFormLoader(),
+    action: useFormAction(),
+    validate: validateContactForm,
   });
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleSubmit: QRL<SubmitHandler<ContactForm>> = $((values, event) => {
+    // Runs on client
+    // show user success message or error message
+  });
+
   useVisibleTask$(() => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -89,8 +84,8 @@ export default component$(() => {
   });
   return (
     <div class="hero min-h-screen max-w-[960px]">
-      <div class="hero-content flex-col lg:flex-row">
-        <div class="text-center lg:text-left whitespace-nowrap">
+      <div class="hero-content flex-col lg:flex-row min-w-[500px]">
+        {/* <div class="text-center lg:text-left whitespace-nowrap">
           <h1 class="text-4xl font-bold">聯絡我們 Now!</h1>
           <p class="py-6 text-xl">
             幫您打造一個與眾不同的網站，
@@ -98,10 +93,15 @@ export default component$(() => {
             從平凡中脫穎而出．
           </p>
           <p class="py-6 text-xl font-mono">qazwsx3134@gmail.com</p>
-        </div>
+        </div> */}
         <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl glass">
           <div class="card-body">
-            <Form>
+            {contactForm.response.status === "success" && (
+              <div class="alert alert-info">
+                {contactForm.response.message}
+              </div>
+            )}
+            <Form onSubmit$={handleSubmit}>
               {/* Name */}
               <Field name="name">
                 {(field, props) => (
@@ -130,13 +130,14 @@ export default component$(() => {
                       type="text"
                       placeholder="email"
                       class="input input-bordered"
-                      required
                       {...props}
                       value={field.value}
                     />
+                    {field.error && <div>{field.error}</div>}
                   </div>
                 )}
               </Field>
+              {/* phone */}
               <Field name="phoneNumber">
                 {(field, props) => (
                   <div class="form-control">
@@ -174,26 +175,45 @@ export default component$(() => {
                     <label class="label">
                       <span class="label-text">偏好聯絡方式</span>
                     </label>
-                    <select
-                      class="select w-full max-w-xs"
-                      {...props}
-                      value={field.value}
-                    >
-                      <option disabled selected>
+                    <select class="select w-full max-w-xs" {...props}>
+                      <option disabled selected key="default" value="default">
                         偏好聯絡方式
                       </option>
-                      <option>Line</option>
-                      <option>Email</option>
-                      <option>電話</option>
+                      <option
+                        key="line"
+                        value="line"
+                        selected={field.value === "line"}
+                      >
+                        Line
+                      </option>
+                      <option
+                        key="email"
+                        value="email"
+                        selected={field.value === "email"}
+                      >
+                        Email
+                      </option>
+                      <option
+                        key="phone"
+                        value="phone"
+                        selected={field.value === "phone"}
+                      >
+                        電話
+                      </option>
                     </select>
                   </div>
                 )}
               </Field>
+              <div class="form-control mt-4">
+                <button
+                  class="btn btn-info"
+                  type="submit"
+                  disabled={contactForm.submitting}
+                >
+                  {contactForm.submitting ? "loading" : "Submit"}
+                </button>
+              </div>
             </Form>
-
-            <div class="form-control">
-              <button class="btn btn-info">Submit</button>
-            </div>
           </div>
         </div>
       </div>
