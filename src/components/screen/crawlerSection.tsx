@@ -371,13 +371,13 @@ export default component$(() => {
   });
   return (
     <div class="flex flex-col grow items-center justify-end relative">
-      <div class="flex flex-col items-center justify-end relative">
+      <div class="flex flex-col grow items-center justify-center relative">
         {/* <Antenna class="h-[500px] z-10" />
         <ServerIcon class="-translate-y-10 z-[11]"/>
 
         <JSONIcon class="opacity-0 text-6xl jsonIcon" />
         <ExcelIcon class="opacity-0 text-6xl excelIcon" /> */}
-        <div class="mockup-code text-xl flex flex-col gap-1">
+        <div class="mockup-code mt-10 text-xl flex flex-col gap-1">
           <pre data-prefix="$">
             <code class="code1"></code>
             <code class="code1-working"></code>

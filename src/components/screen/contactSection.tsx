@@ -1,4 +1,4 @@
-import { component$, useVisibleTask$, $, QRL } from "@builder.io/qwik";
+import { component$, useVisibleTask$, $, type QRL } from "@builder.io/qwik";
 
 import type { SubmitHandler } from "@modular-forms/qwik";
 import { useForm } from "@modular-forms/qwik";

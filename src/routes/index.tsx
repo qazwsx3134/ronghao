@@ -1,5 +1,5 @@
 import { component$, useVisibleTask$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { type DocumentHead } from "@builder.io/qwik-city";
 
 import { gsap } from "gsap";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
@@ -23,6 +23,7 @@ import RobotSection from "~/components/screen/robotSection";
 
 import ScreenOne from "~/components/screen/screenOne";
 import { objectToFormData } from "~/utils/form";
+import Footer from "~/components/starter/footer/footer";
 
 export const useContactFormLoader = routeLoader$<InitialValues<ContactForm>>(
   () => ({
@@ -53,9 +54,12 @@ export const useFormAction = formAction$<ContactForm>(async (values) => {
   // Runs on server
   // sent to google sheet, and check if any error
   // if error, return error message
-  console.log(values);
-  const scriptURL =
-    "https://script.google.com/macros/s/AKfycbw89Luv5y2BN5MyhzA4eltdqtV8yq4aKgnct1Zb5YCEK_IzcFQOpT6DkmVhbminE7w0SA/exec";
+  // const scriptURLold =
+  //   "https://script.google.com/macros/s/AKfycbw89Luv5y2BN5MyhzA4eltdqtV8yq4aKgnct1Zb5YCEK_IzcFQOpT6DkmVhbminE7w0SA/exec";
+  const scriptURL = await fetch("/api/serverEnv")
+    .then((res) => res.json())
+    .then((res) => res.GOOGLE_APP_SCRIPT_URL_CONTACT_FORM)
+    .catch((error) => error.message);
 
   const fData = objectToFormData(values);
   console.log(fData);
@@ -394,7 +398,7 @@ export default component$(() => {
             </div>
           </div>
 
-          <div class="contactSection w-full h-[1000px] flex flex-col items-center relative">
+          <div class="contactSection w-full h-[1000px] flex flex-col grow items-center relative">
             <h2
               id="contactTitle"
               class="mt-8 mb-24 pt-3 text-6xl font-bold tracking-wider text-outline"
@@ -404,6 +408,9 @@ export default component$(() => {
             <div class="flex flex-col grow w-full items-center">
               <ContactSection />
             </div>
+          </div>
+          <div class="footerSection w-full flex grow-0 ">
+            <Footer />
           </div>
         </div>
       </section>
