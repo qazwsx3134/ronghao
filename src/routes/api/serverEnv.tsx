@@ -5,6 +5,7 @@ export const onGet: RequestHandler<PlatformCloudflarePages> = async ({
   platform,
   json,
 }) => {
+  console.log("platform.env");
   json(200, {
     GOOGLE_APP_SCRIPT_URL_CONTACT_FORM:
       platform.env["GOOGLE_APP_SCRIPT_URL_CONTACT_FORM"],

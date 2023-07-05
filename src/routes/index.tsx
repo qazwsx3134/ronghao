@@ -1,5 +1,7 @@
 import { component$, useVisibleTask$ } from "@builder.io/qwik";
-import { type DocumentHead } from "@builder.io/qwik-city";
+import {
+  type DocumentHead,
+} from "@builder.io/qwik-city";
 
 import { gsap } from "gsap";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
@@ -50,37 +52,42 @@ export type ContactForm = z.infer<typeof contactSchema>;
 
 export const validateContactForm = zodForm$(contactSchema);
 
-export const useFormAction = formAction$<ContactForm>(async (values) => {
-  // Runs on server
-  // sent to google sheet, and check if any error
-  // if error, return error message
-  // const scriptURLold =
-  //   "https://script.google.com/macros/s/AKfycbw89Luv5y2BN5MyhzA4eltdqtV8yq4aKgnct1Zb5YCEK_IzcFQOpT6DkmVhbminE7w0SA/exec";
-  const scriptURL = await fetch("/api/serverEnv")
-    .then((res) => res.json())
-    .then((res) => res.GOOGLE_APP_SCRIPT_URL_CONTACT_FORM)
-    .catch((error) => error.message);
+export const useFormAction = formAction$<ContactForm>(
+  async (values, requestEvent) => {
+    // Runs on server
+    // sent to google sheet, and check if any error
+    // if error, return error message
+    const scriptURL =
+      requestEvent.env.get("GOOGLE_APP_SCRIPT_URL_CONTACT_FORM") || "";
 
-  const fData = objectToFormData(values);
-  console.log(fData);
+    if (scriptURL === "") {
+      return {
+        status: "error",
+        message: "Something went wrong.",
+      };
+    }
 
-  const res = await fetch(scriptURL, { method: "POST", body: fData })
-    .then((response) => response.json())
-    .catch((error) => error.message);
+    const fData = objectToFormData(values);
 
-  if (res?.result === "success") {
+    const res = await fetch(scriptURL, { method: "POST", body: fData })
+      .then((response) => response.json())
+      .catch((error) => error.message);
+
+    if (res?.result === "success") {
+      return {
+        status: "success",
+        message: "Thank you for contacting us. We will get back to you soon.",
+        data: res,
+      };
+    }
     return {
-      status: "success",
-      message: "Thank you for contacting us. We will get back to you soon.",
+      status: "error",
+      message: "Something went wrong.",
       data: res,
     };
-  }
-  return {
-    status: "error",
-    message: "Something went wrong.",
-    data: res,
-  };
-}, zodForm$(contactSchema));
+  },
+  zodForm$(contactSchema)
+);
 
 export default component$(() => {
   useVisibleTask$(() => {
